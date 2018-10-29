@@ -23,21 +23,19 @@ function GetDataBase()
 }
 
 //Selection d'un utilisateur
-function GetUser($lIdUser, PDO $bdd = null)
+function GetUser($lIdUser)
 {
     $lobjUser = null;
+    $bdd = GetDataBase();
 
-    //BDD connexion
-    if ($bdd = null) {
-        $bdd = GetDataBase();
-    }
 
     if ($bdd) {
         //Connexion done, request select
-        $lstrQuery = "SELECT * FROM user WHERE id = :pid";
+        $lstrQuery = "SELECT * FROM users WHERE id = :pid";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pid', $lIdUser);
         $stmt->execute();
+
 
         $lobjUser = $stmt->fetch(PDO::FETCH_OBJ);
     }
