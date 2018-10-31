@@ -1,0 +1,13 @@
+Salut Maurice,
+
+Bon pour ce projet BDD, je viens de faire un CRUD complet sur les utilisateurs;
+Il nous reste à voir comment faire le lien entre les différents fichiers pour la gestion des ID d'une page à l'autre. Variable session ? A moins que tu ais une autre idée car je sais que
+tu es calée dessus du moins que tu en as déjà fait.
+Il reste à faire :
+- CRUD appartement
+- Du design (simpliste qui doit fonctionner)
+- les différentes intéractions
+- page d'authentification
+
+J'ai codé au plus fonctionnel.
+Les chemins relatifs ne fonctionnent pas sur mon pc aujourd'hui dans tous mes projets donc on verra demain ou un autre jour si ça veut bien marcher sinon fuck.

@@ -1,0 +1,21 @@
+<?php
+require_once ("../model/mainModel.php");
+
+if(isset($_POST) && count($_POST) > 0){
+    //Insertion de l'utilisateur
+    $lboolOk = InsertUser($_POST['id'], $_POST['name'],$_POST['firstname'],$_POST['adress'], $_POST['phone'], $_POST['mail'],$_POST['country'],$_POST['solde'],$_POST['password'],$_POST['type']);
+
+
+    if ($lboolOk == true){
+        //l'inscription s'est bien passée
+        echo("L'inscription s'est bien effectuée");
+    }else{
+        //Erreur à l'inscription
+        echo ("Echec de l'inscription");
+    }
+}
+
+
+
+
+require_once ("../view/insertUser.view.php");
