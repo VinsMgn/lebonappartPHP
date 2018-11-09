@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 26 oct. 2018 à 13:23
+-- Généré le :  ven. 09 nov. 2018 à 13:51
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -49,7 +49,15 @@ CREATE TABLE IF NOT EXISTS `appartements` (
   KEY `APPARTEMENTS_USERS_FK` (`FK_USERS`),
   KEY `APPARTEMENTS_QUARTIERS0_FK` (`FK_QUARTIERS`),
   KEY `APPARTEMENTS_VILLES1_FK` (`FK_VILLES`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `appartements`
+--
+
+INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
+(1, 600, 'studio 20m²', 'neuf', 1, 20, 0, '200', '06/04/2016', '31/08/2019', 'Location interessante', 0, 2, 1, 1),
+(2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -66,6 +74,14 @@ CREATE TABLE IF NOT EXISTS `habite` (
   KEY `habite_USERS0_FK` (`FK_USERS_HABITE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `habite`
+--
+
+INSERT INTO `habite` (`id_habite`, `FK_USERS_HABITE`, `dateVente`) VALUES
+(1, 1, '06/10/2016'),
+(2, 2, '20/11/2018');
+
 -- --------------------------------------------------------
 
 --
@@ -79,7 +95,19 @@ CREATE TABLE IF NOT EXISTS `quartiers` (
   `fk_ville_quartier` int(11) NOT NULL,
   PRIMARY KEY (`id_quartier`),
   KEY `QUARTIERS_VILLES_FK` (`fk_ville_quartier`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `quartiers`
+--
+
+INSERT INTO `quartiers` (`id_quartier`, `nomQuartier`, `fk_ville_quartier`) VALUES
+(1, 'Millénaire', 1),
+(2, 'Odysseum', 1),
+(3, 'Paillade', 1),
+(4, '1er arrondissement', 2),
+(5, '2ème arrondissement', 2),
+(6, '3ème arrondissement', 2);
 
 -- --------------------------------------------------------
 
@@ -100,7 +128,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `prenom`, `adress`, `phone`, `mail`, `pays`, `solde`, `password`, `type`) VALUES
+(1, 'Martin', 'Gabriel', '25 rue des coquelicots', '0612345678', 'gabriel.martin@epsi.fr', 'France', '200', '1234', 'locataire'),
+(2, 'Marignier', 'Vincent', 'Montpellier', '0612345678', 'vincent.marignier@epsi.fr', 'France', '150', 'abcd', 'locataire'),
+(3, 'Dupont', 'Jean', '25 rue de Montpellier', '0465885987', 'dupontjean@yahoo.fr', 'France', '0', '1234', 'loueur'),
+(4, 'Durand', 'Anthony', '34 route de nimes', '0612345679', 'a.durand@gmail.com', 'France', '900', '1234', 'locataire');
 
 -- --------------------------------------------------------
 
@@ -113,14 +151,15 @@ CREATE TABLE IF NOT EXISTS `villes` (
   `id_ville` int(11) NOT NULL AUTO_INCREMENT,
   `nomVille` varchar(180) NOT NULL,
   PRIMARY KEY (`id_ville`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `villes`
 --
 
 INSERT INTO `villes` (`id_ville`, `nomVille`) VALUES
-(1, 'Montpellier');
+(1, 'Montpellier'),
+(2, 'Paris');
 
 --
 -- Contraintes pour les tables déchargées
