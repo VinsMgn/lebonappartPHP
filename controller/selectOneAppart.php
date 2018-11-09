@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vince
- * Date: 09/11/2018
- * Time: 15:34
- */
+require_once("../model/mainModel.php");
+
+$lidAppart = 1;
+$lobjAppart = GetAppart($lidAppart);
+
+
+
+require_once ("../view/selectOneAppart.view.php");

@@ -148,3 +148,74 @@ function DeleteUser($id){
     }
     return $lboolOk;
 }
+//Fonctions CRUD appartement (Vincent)
+
+//Affichage d'un appartement
+function GetAppart($lidAppart)
+{
+    $lobjAppart = null;
+
+    $bdd = GetDataBase();
+
+    if ($bdd) {
+        $lstrQuery = "SELECT * FROM appartements where id_appartement = :pId";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pId', $lidAppart);
+        $stmt->execute();
+
+        $lobjAppart = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    return $lobjAppart;
+}
+
+//Affichage de tous les appartements
+function GetApparts()
+{
+    //Connexion à la base de données
+    $bdd = GetDataBase();
+
+    if ($bdd) {
+        $lstrQuery = "SELECT * FROM appartements";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->execute();
+
+        $lobjApparts = $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    return $lobjApparts;
+}
+
+//Ajout d'un logement
+function AddAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
+{
+    $bdd = GetDataBase();
+    $lboolOk = false;
+
+
+    if($bdd){
+        $lstrQuery = "INSERT INTO appartements (id_appartement, prix, description, etat, nbPiece, surface, meuble, ind_energie, dateCreation, dateExpiration, message, statut, FK_USERS, FK_QUARTIERS, FK_VILLES)
+                    VALUES (:pId, :pPrix, :pDescription, :pEtat, :pNbPiece, :pSurface, :pMeuble, :pIndEnergy, :pCreation, :pExpiration, :pMessage, :pStatut, :pUsers, :pQuartier, :pTown)";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pId',$id);
+        $stmt->bindParam(':pPrix',$prix);
+        $stmt->bindParam(':pDescription',$description);
+        $stmt->bindParam(':pEtat',$etat);
+        $stmt->bindParam(':pNbPiece',$nbPiece);
+        $stmt->bindParam(':pSurface',$surface);
+        $stmt->bindParam(':pMeuble',$meuble);
+        $stmt->bindParam(':pIndEnergy',$indEnergy);
+        $stmt->bindParam(':pCreation',$creation);
+        $stmt->bindParam(':pExpiration',$expiration);
+        $stmt->bindParam(':pMessage',$message);
+        $stmt->bindParam(':pStatut',$statut);
+        $stmt->bindParam(':pUsers',$idUser);
+        $stmt->bindParam(':pQuartier',$idQuartier);
+        $stmt->bindParam(':pTown',$idtown);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+    return $lboolOk;
+}
+
+//Fin fonctions CRUD appartement (Vincent)
