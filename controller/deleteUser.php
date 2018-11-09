@@ -3,6 +3,7 @@ require_once ("../model/mainModel.php");
 
 //$lboolOk = DeleteUser();
 
+
 $lintIdUser = 1;
 $lobjUser = GetUser($lintIdUser);
 

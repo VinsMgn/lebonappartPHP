@@ -21,6 +21,26 @@ function GetDataBase()
 
     return $bdd;
 }
+function authenticate($lstrMail,$lstrPassword){
+    $lobjUser = null;
+    $bdd = GetDataBase();
+
+
+    if ($bdd) {
+        //Connexion done, request select
+        $lstrQuery = "SELECT * FROM users WHERE mail = :pMail AND password = :pPassword" ;
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pMail', $lstrMail);
+        $stmt->bindParam(':pPassword', $lstrPassword);
+        $stmt->execute();
+
+
+        $lobjUser = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+        return $lobjUser;
+
+   
+}
 
 //Affichage d'un utilisateur
 function GetUser($lIdUser)
