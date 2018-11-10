@@ -7,3 +7,13 @@ session_start();
 
 //AuthGuard($RQT_URL);
 
+if (isset($_POST) && count($_POST)){
+    //Remplir les paramètres avec la view
+    $lboolOk = UpdateAppart();
+
+    if($lboolOk == true){
+        echo("La modification est effectuée");
+    }else{
+        echo("La modification ne s'est pas faite");
+    }
+}
