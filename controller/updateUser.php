@@ -6,7 +6,7 @@ $RQT_URL = $_SERVER['REQUEST_URI'];
 session_start();
 AuthGuard($RQT_URL);
 //Obtention de l'utilisateur
-$lintIdUser = 2;
+$lintIdUser = $_SESSION['id'];
 $lobjUser = GetUser($lintIdUser);
 
 //Modification de l'utilisateur

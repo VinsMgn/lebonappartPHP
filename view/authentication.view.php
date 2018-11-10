@@ -5,7 +5,7 @@
 //require_once("../controller/authentication.php");
 ?>
 
-<h1> Connexion à la plateforme dsgfdsg</h1>
+<h1>Connexion à la plateforme</h1>
 
 
 <form action="" method="POST" >

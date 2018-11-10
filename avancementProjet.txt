@@ -1,13 +1,15 @@
-Salut Maurice,
-
-Bon pour ce projet BDD, je viens de faire un CRUD complet sur les utilisateurs;
-Il nous reste à voir comment faire le lien entre les différents fichiers pour la gestion des ID d'une page à l'autre. Variable session ? A moins que tu ais une autre idée car je sais que
-tu es calée dessus du moins que tu en as déjà fait.
 Il reste à faire :
-- CRUD appartement
-- Du design (simpliste qui doit fonctionner)
-- les différentes intéractions
-- page d'authentification
+- Du design (simpliste qui doit fonctionner on l'arrangera pour le BTS)
 
-J'ai codé au plus fonctionnel.
-Les chemins relatifs ne fonctionnent pas sur mon pc aujourd'hui dans tous mes projets donc on verra demain ou un autre jour si ça veut bien marcher sinon fuck.
+- Requête de sélection à la connexion
+	- Sélection de l'appartement de l'utilisateur connecté
+	- Toutes les informations liées à l'appartement
+
+- Procédures stockées :
+	- Sélectionner les appartements de l'utilisateur une fois qu'il est connecté
+	- Faire les fonctions de recherche et/ou de tri selon les villes / quartiers (sélection des appartements dans les villes et les quartiers)
+
+- Triggers :
+	- A l'insertion, vérifier que l'utilsateur n'existe pas déjà avec son adresse mail
+	- A l'echange, vérifier que le solde est suffisant pour que l'utilisateur puisse faire la transaction et passer les dates aux dates choisies
+- Finir la partie view de l'update, faire le delete (view + controller), debug l'insertion (le formulaire ne s'envoie pas)

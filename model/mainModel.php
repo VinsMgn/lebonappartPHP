@@ -21,6 +21,8 @@ function GetDataBase()
 
     return $bdd;
 }
+
+//Authentification
 function authenticate($lstrMail,$lstrPassword){
     $lobjUser = null;
     $bdd = GetDataBase();
@@ -218,4 +220,31 @@ function AddAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble,
     return $lboolOk;
 }
 
-//Fin fonctions CRUD appartement (Vincent)
+//Modification d'un appartement
+function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown){
+    $lboolOk = false;
+
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "UPDATE appartements SET prix = :pPrix, description = :pDescription, etat = :pEtat, nbPiece = :pNbPiece, surface = :pSurface, meuble = :pMeuble, ind_energie = :pIndEnergy, dateCreation = :pCreation, dateExpiration = :pExpiration, message = :pMessage, statut =:pStatut WHERE id_appartement = :pId";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pPrix', $prix);
+        $stmt->bindParam(':pDescription', $description);
+        $stmt->bindParam(':pEtat', $etat);
+        $stmt->bindParam(':pNbPiece', $nbPiece);
+        $stmt->bindParam(':pSurface', $surface);
+        $stmt->bindParam(':pMeuble', $meuble);
+        $stmt->bindParam(':pIndEnergy', $indEnergy);
+        $stmt->bindParam(':pCreation', $creation);
+        $stmt->bindParam(':pExpiration', $expiration);
+        $stmt->bindParam(':pMessage', $message);
+        $stmt->bindParam(':pStatut', $statut);
+        $stmt->bindParam(':pId', $id);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+
+    return $lboolOk;
+}

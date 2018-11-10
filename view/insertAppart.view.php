@@ -72,8 +72,8 @@ require_once("../controller/insertAppart.php");
             </label>
         </div>
         <div class="input-field">
-            <label for="user" class=""> Id User
-                <input required name="user" type="text">
+            <label for="user" class="" hidden="hidden"> Id User
+                <input required name="user" type="text" value="<?php $_SESSION['id'];?>">
             </label>
         </div>
         <div class="input-field">
