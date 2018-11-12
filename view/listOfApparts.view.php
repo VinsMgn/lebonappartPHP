@@ -5,8 +5,10 @@ require_once("../controller/listOfApparts.php");
 ?><h1> Liste des apartements</h1>
 
 <?php
+
 foreach ($lobjApparts as $lobjAppart) {
-        ?>
+   ?>
+
 
         <div>
             <br>
