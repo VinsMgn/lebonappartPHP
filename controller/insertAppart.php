@@ -8,8 +8,7 @@ require_once ("../view/insertAppart.view.php");
 
 AuthGuard($RQT_URL);
 
-var_dump($_POST);
-//var_dump($_SESSION);
+
 if (isset($_POST) && count($_POST) > 0){
     echo("coucou");
     //Insertion de l'utilisateur

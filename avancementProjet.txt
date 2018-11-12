@@ -10,6 +10,13 @@ Il reste à faire :
 	- Faire les fonctions de recherche et/ou de tri selon les villes / quartiers (sélection des appartements dans les villes et les quartiers)
 
 - Triggers :
+	- A la suppression, stocker l'appartement dans une table historique (OK + fonctionne par suppression client)
+
 	- A l'insertion, vérifier que l'utilsateur n'existe pas déjà avec son adresse mail
 	- A l'echange, vérifier que le solde est suffisant pour que l'utilisateur puisse faire la transaction et passer les dates aux dates choisies
 - Finir la partie view de l'update, faire le delete (view + controller), debug l'insertion (le formulaire ne s'envoie pas)
+
+
+PROBLEME DE SUPPRESSION DANS LA TABLE HABITE QUI BLOQUE LA SUPPRESSION DANS LA TABLE APPARTEMENT A REGLER. Gérer également l'insertion dans cette table.
+
+Gérer aussi les transactions et la validation.

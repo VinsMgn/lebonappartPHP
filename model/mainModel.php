@@ -150,10 +150,30 @@ function DeleteUser($id){
     }
     return $lboolOk;
 }
-//Fonctions CRUD appartement (Vincent)
 
-//Affichage d'un appartement
-function GetAppart($lidAppart)
+//Fonctions Vincent
+//Affichage d'un appartement selon l'utilisateur connecté
+function GetAppartByUser($idUser)
+{
+    $lobjAppart = null;
+
+    $bdd = GetDataBase();
+
+    if ($bdd) {
+        $lstrQuery = "SELECT * FROM appartements where FK_USERS = :pId";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pId', $idUser);
+        $stmt->execute();
+
+        $lobjAppart = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    return $lobjAppart;
+}
+
+//Fonctions Vincent
+//Affichage d'un appartement avec son id
+function GetAppart($idAppart)
 {
     $lobjAppart = null;
 
@@ -162,7 +182,7 @@ function GetAppart($lidAppart)
     if ($bdd) {
         $lstrQuery = "SELECT * FROM appartements where id_appartement = :pId";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pId', $lidAppart);
+        $stmt->bindParam(':pId', $idAppart);
         $stmt->execute();
 
         $lobjAppart = $stmt->fetch(PDO::FETCH_OBJ);
@@ -170,6 +190,7 @@ function GetAppart($lidAppart)
 
     return $lobjAppart;
 }
+
 
 //Affichage de tous les appartements
 function GetApparts()
@@ -186,6 +207,7 @@ function GetApparts()
     }
     return $lobjApparts;
 }
+
 
 //Ajout d'un logement
 function AddAppart( $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
@@ -250,3 +272,20 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
 
 //Fonctions Vincent
+//Suppression d'un appartement
+function DeleteAppart($id){
+    $lboolOk = false;
+
+    $bdd = GetDataBase();
+
+    if($bdd) {
+        $lstrQuery = "DELETE FROM appartements where id_appartement = :pId";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pId', $id);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+
+    return $lboolOk;
+}

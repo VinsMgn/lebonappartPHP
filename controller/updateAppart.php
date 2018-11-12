@@ -7,9 +7,9 @@ session_start();
 
 //AuthGuard($RQT_URL);
 
-//Selection de l'appartement selon le mec connecté
+//Selection de l'appartement selon l'utilisateur connecté
 $lobjUser = GetUser($_SESSION['id']);
-$lobjAppart = GetAppart($lobjUser->id);
+$lobjAppart = GetAppartByUser($lobjUser->id);
 
 
 if (isset($_POST) && count($_POST)){

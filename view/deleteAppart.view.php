@@ -3,9 +3,9 @@
 if ($lobjAppart) {
     ?>
     <!-- Formulaire HTML pour modifier les données-->
-    <h1> Modifiez le logement </h1>
+    <h1> Voulez-vous supprimer votre appartement ? </h1>
     <div>
-        <form method="post" action="../controller/updateAppart.php">
+        <form method="post" action="../controller/deleteAppart.php">
             <div class="input-field">
                 <label for="identifiant" class="" hidden="hidden">
                     <input required name="identifiant" type="text" value="<?php echo($lobjAppart->id_appartement);?>" >
@@ -74,7 +74,7 @@ if ($lobjAppart) {
             </div>
             <div class="input-field">
                 <label for="submit" class="">
-                    <input required name="submit" type="submit" value="Modifier mes données">
+                    <input required name="submit" type="submit" value="Supprimer mes données">
                 </label>
             </div>
         </form>

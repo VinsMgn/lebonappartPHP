@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 12 nov. 2018 à 10:08
+-- Généré le :  lun. 12 nov. 2018 à 12:46
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `appartements` (
 --
 
 INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
-(1, 600, 'studio 20m²', 'neuf', 1, 20, 0, '200', '06/04/2016', '31/08/2019', 'Location interessante', 0, 2, 1, 34000),
+(1, 600, 'studio 20m²', 'neuf', 1, 20, 1, '150', '06/04/2016', '31/08/2019', 'Location interessante', 1, 2, 1, 34000),
 (2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 34000),
 (3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000);
 
@@ -82,6 +82,35 @@ CREATE TABLE IF NOT EXISTS `habite` (
 INSERT INTO `habite` (`id_habite`, `FK_USERS_HABITE`, `dateVente`) VALUES
 (1, 1, '06/10/2016'),
 (2, 2, '20/11/2018');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `historique`
+--
+
+DROP TABLE IF EXISTS `historique`;
+CREATE TABLE IF NOT EXISTS `historique` (
+  `id_appartement` int(11) NOT NULL AUTO_INCREMENT,
+  `prix` int(11) NOT NULL,
+  `description` varchar(180) NOT NULL,
+  `etat` varchar(180) NOT NULL,
+  `nbPiece` int(11) NOT NULL,
+  `surface` int(11) NOT NULL,
+  `meuble` tinyint(1) NOT NULL,
+  `ind_energie` varchar(180) NOT NULL,
+  `dateCreation` varchar(180) NOT NULL,
+  `dateExpiration` varchar(180) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `statut` tinyint(1) NOT NULL,
+  `FK_USERS` int(11) NOT NULL,
+  `FK_QUARTIERS` int(11) NOT NULL,
+  `FK_VILLES` int(11) NOT NULL,
+  PRIMARY KEY (`id_appartement`),
+  KEY `APPARTEMENTS_USERS_FK` (`FK_USERS`),
+  KEY `APPARTEMENTS_QUARTIERS0_FK` (`FK_QUARTIERS`),
+  KEY `APPARTEMENTS_VILLES1_FK` (`FK_VILLES`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
