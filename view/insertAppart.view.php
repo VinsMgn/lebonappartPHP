@@ -2,7 +2,7 @@
 //$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
 
 //Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
-require_once("../controller/insertAppart.php");
+//require_once("../controller/insertAppart.php");
 ?>
 
 <h1> Ajout d'un appartement à la plateforme</h1>
