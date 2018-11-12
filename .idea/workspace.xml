@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e02f40f7-e775-435a-9a87-a2ec633abe4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/listOfApparts.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/listOfApparts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/listOfApparts.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/listOfApparts.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/listOfAppartsUser.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/listOfAppartsUser.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lebonappart.sql" beforeDir="false" afterPath="$PROJECT_DIR$/lebonappart.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +28,7 @@
     <session id="-1850084415">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.19" value="1" />
@@ -349,16 +346,15 @@
       <workItem from="1542008744543" duration="281000" />
       <workItem from="1542010346294" duration="1092000" />
       <workItem from="1542012051049" duration="12246000" />
-      <workItem from="1542053587321" duration="766000" />
+      <workItem from="1542053587321" duration="998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44835000" />
+    <option name="totallyTimeSpent" value="45067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15167785" />
       <window_info id="Structure" order="1" weight="0.25" />
