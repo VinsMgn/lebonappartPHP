@@ -8,52 +8,68 @@ if ($lobjAppart) {
         <form method="post" action="../controller/updateAppart.php">
             <div class="input-field">
                 <label for="identifiant" class="" hidden="hidden">
-                    <input required name="identifiant" type="text" value="<?php echo($lobjUser->id);?>" >
+                    <input required name="identifiant" type="text" value="<?php echo($lobjAppart->id_appartement);?>" >
                 </label>
-                <label for="name" class=""> Nom
-                    <input required name="name" type="text" value="<?php echo($lobjUser->nom);?>">
+                <label for="prix" class=""> Prix
+                    <input required name="prix" type="text" value="<?php echo($lobjAppart->prix);?>">
                 </label>
             </div>
 
             <div class="input-field">
 
-                <label for="firstname" class="">Prénom
-                    <input required name="firstname" type="text" value="<?php echo($lobjUser->prenom);?>">
+                <label for="description" class="">Description
+                    <input required name="description" type="text" value="<?php echo($lobjAppart->description);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="adress" class=""> Adresse
-                    <input required name="adress" type="text" value="<?php echo($lobjUser->adress);?>">
+                <label for="etat" class=""> Etat
+                    <input required name="etat" type="text" value="<?php echo($lobjAppart->etat);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="phone" class=""> Téléphone
-                    <input required name="phone" type="text" value="<?php echo($lobjUser->phone);?>">
+                <label for="nbPiece" class=""> Nombre de pièce(s)
+                    <input required name="nbPiece" type="text" value="<?php echo($lobjAppart->nbPiece);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="mail" class=""> Mail
-                    <input required name="mail" type="email" value="<?php echo($lobjUser->mail);?>">
+                <label for="surface" class=""> Surface
+                    <input required name="surface" type="text" value="<?php echo($lobjAppart->surface);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="country" class=""> Pays
-                    <input required name="country" type="text" value="<?php echo($lobjUser->pays);?>">
+                <label for="meuble" class=""> Meublé
+                    <select name="meuble">
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
                 </label>
             </div>
             <div class="input-field">
-                <label for="password" class=""> Mot de passe
-                    <input required name="password" type="password" value="<?php echo($lobjUser->password);?>">
+                <label for="ind_energie" class=""> Indice d'énergie
+                    <input required name="ind_energie" type="text" value="<?php echo($lobjAppart->ind_energie);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="type" class=""> Type (locataire/loueur)
-                    <input required name="type" type="text" value="<?php echo($lobjUser->type);?>">
+                <label for="creation" class=""> Création
+                    <input required name="creation" type="text" value="<?php echo($lobjAppart->dateCreation);?>">
                 </label>
             </div>
             <div class="input-field">
-                <label for="solde" class=""> Solde (0 si aucun)
-                    <input required name="solde" type="text" value="<?php echo($lobjUser->solde);?>">
+                <label for="expiration" class=""> Expiration du bail
+                    <input required name="expiration" type="text" value="<?php echo($lobjAppart->dateExpiration);?>">
+                </label>
+            </div>
+            <div class="input-field">
+                <label for="message" class=""> Message supplémentaire
+                    <input required name="message" type="text" value="<?php echo($lobjAppart->message);?>">
+                </label>
+            </div>
+            <div class="input-field">
+                <label for="expiration" class=""> Statut
+                    <select name="statut">
+                        <option value="occupe">Occupé</option>
+                        <option value="disponible">Disponible</option>
+                    </select>
                 </label>
             </div>
             <div class="input-field">

@@ -250,5 +250,3 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
 
 //Fonctions Vincent
-
-//Selection de l'appartement selon l'id du mec connecté

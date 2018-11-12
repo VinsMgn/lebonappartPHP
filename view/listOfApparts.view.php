@@ -2,9 +2,8 @@
 require_once("../controller/listOfApparts.php");
 
 
-?><h1> Liste de mes apartements</h1>
-    <button><a href="../controller/insertAppart.php" style="text-decoration: none; color: black">Ajouter un logement</a>
-    </button>
+?><h1> Liste des apartements</h1>
+
 <?php
 foreach ($lobjApparts as $lobjAppart) {
         ?>

@@ -9,12 +9,24 @@ session_start();
 
 //Selection de l'appartement selon le mec connecté
 $lobjUser = GetUser($_SESSION['id']);
-
+$lobjAppart = GetAppart($lobjUser->id);
 
 
 if (isset($_POST) && count($_POST)){
+    if($_POST['meuble'] == "oui"){
+        $meuble = 1;
+    }else{
+        $meuble = 0;
+    }
+
+    if($_POST['statut'] == "occupe"){
+        $statut = 1;
+    }else{
+        $statut = 0;
+    }
+
     //Remplir les paramètres avec la view
-    $lboolOk = UpdateAppart();
+    $lboolOk = UpdateAppart($_SESSION['id'], $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'],$meuble, $_POST['ind_energie'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $statut);
 
     if($lboolOk == true){
         echo("La modification est effectuée");
@@ -22,3 +34,5 @@ if (isset($_POST) && count($_POST)){
         echo("La modification ne s'est pas faite");
     }
 }
+
+require_once ("../view/updateAppart.view.php");

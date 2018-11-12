@@ -10,7 +10,7 @@ foreach ($lobjApparts as $lobjAppart) {
     if ($lobjAppart->FK_USERS == $_SESSION['id']) {
 
         ?>
-        
+
         <div>
             <br>
             <div>
