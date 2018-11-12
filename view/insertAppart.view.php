@@ -9,86 +9,86 @@
 
 <div class="formcontainer">
 
-    <form method="post" action="../controller/insertAppart.php">
-        <div class="input-field">
-            <label for="id" class="">Identifiant
-                <input required name="id" type="text">
-            </label>
-        </div>
+    <form method="POST" action="">
+<!--        <div class="input-field">-->
+<!--            <label for="id" class="">Identifiant-->
+<!--                <input  name="id" type="text">-->
+<!--            </label>-->
+<!--        </div>-->
         <div class="input-field">
             <label for="prix" class=""> Prix
-                <input required name="prix" type="text">
+                <input  name="prix" type="text">
             </label>
         </div>
 
         <div class="input-field">
             <label for="description" class="">Description
-                <input required name="description" type="text">
+                <input  name="description" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="etat" class=""> Etat
-                <input required name="etat" type="text">
+                <input  name="etat" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="nbPiece" class=""> Nombre de pièces
-                <input required name="nbPiece" type="text">
+                <input  name="nbPiece" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="surface" class=""> Surface
-                <input required name="surface" type="text">
+                <input  name="surface" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="meuble" class=""> Meublé
-                <input required name="meuble" type="text">
+                <input  name="meuble" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="indEnergy" class=""> Indice énergie
-                <input required name="indEnergy" type="text">
+                <input  name="indEnergy" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="creation" class=""> Création
-                <input required name="creation" type="text">
+                <input  name="creation" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="expiration" class=""> Expiration
-                <input required name="expiration" type="text">
+                <input  name="expiration" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="message" class=""> Message
-                <input required name="message" type="text">
+                <input  name="message" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="statut" class=""> Statut
-                <input required name="statut" type="text">
+                <input  name="statut" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="user" class="" hidden="hidden"> Id User
-                <input required name="user" type="text" value="<?php $_SESSION['id'];?>">
+                <input  name="user" type="text" value="<?php $_SESSION['id'];?>">
             </label>
         </div>
         <div class="input-field">
             <label for="quartier" class=""> Id Quartier
-                <input required name="quartier" type="text">
+                <input  name="quartier" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="town" class=""> Id Ville
-                <input required name="town" type="text">
+                <input  name="town" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="submit" class="">
-                <input required name="submit" type="submit" value="Enregistrer">
+                <input  name="submit" type="submit" value="Enregistrer">
             </label>
         </div>
     </form>

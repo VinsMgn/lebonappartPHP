@@ -188,17 +188,16 @@ function GetApparts()
 }
 
 //Ajout d'un logement
-function AddAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
+function AddAppart( $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
 {
     $bdd = GetDataBase();
     $lboolOk = false;
 
 
     if($bdd){
-        $lstrQuery = "INSERT INTO appartements (id_appartement, prix, description, etat, nbPiece, surface, meuble, ind_energie, dateCreation, dateExpiration, message, statut, FK_USERS, FK_QUARTIERS, FK_VILLES)
-                    VALUES (:pId, :pPrix, :pDescription, :pEtat, :pNbPiece, :pSurface, :pMeuble, :pIndEnergy, :pCreation, :pExpiration, :pMessage, :pStatut, :pUsers, :pQuartier, :pTown)";
+        $lstrQuery = "INSERT INTO appartements (prix, description, etat, nbPiece, surface, meuble, ind_energie, dateCreation, dateExpiration, message, statut, FK_USERS, FK_QUARTIERS, FK_VILLES)
+                    VALUES (:pPrix, :pDescription, :pEtat, :pNbPiece, :pSurface, :pMeuble, :pIndEnergy, :pCreation, :pExpiration, :pMessage, :pStatut, :pUsers, :pQuartier, :pTown)";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pId',$id);
         $stmt->bindParam(':pPrix',$prix);
         $stmt->bindParam(':pDescription',$description);
         $stmt->bindParam(':pEtat',$etat);
