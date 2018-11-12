@@ -220,7 +220,7 @@ function AddAppart( $prix, $description, $etat, $nbPiece, $surface, $meuble, $in
 }
 
 //Modification d'un appartement
-function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown){
+function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut){
     $lboolOk = false;
 
     $bdd = GetDataBase();
@@ -247,3 +247,8 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
     return $lboolOk;
 }
+
+
+//Fonctions Vincent
+
+//Selection de l'appartement selon l'id du mec connecté

@@ -7,6 +7,11 @@ session_start();
 
 //AuthGuard($RQT_URL);
 
+//Selection de l'appartement selon le mec connecté
+$lobjUser = GetUser($_SESSION['id']);
+
+
+
 if (isset($_POST) && count($_POST)){
     //Remplir les paramètres avec la view
     $lboolOk = UpdateAppart();

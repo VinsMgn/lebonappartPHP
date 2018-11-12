@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 12 nov. 2018 à 08:17
+-- Généré le :  lun. 12 nov. 2018 à 09:26
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `appartements` (
 --
 
 INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
-(1, 600, 'studio 20m²', 'neuf', 1, 20, 0, '200', '06/04/2016', '31/08/2019', 'Location interessante', 0, 2, 1, 1),
-(2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 1),
-(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 1);
+(1, 600, 'studio 20m²', 'neuf', 1, 20, 0, '200', '06/04/2016', '31/08/2019', 'Location interessante', 0, 2, 1, 34000),
+(2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 34000),
+(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000);
 
 -- --------------------------------------------------------
 
@@ -103,12 +103,12 @@ CREATE TABLE IF NOT EXISTS `quartiers` (
 --
 
 INSERT INTO `quartiers` (`id_quartier`, `nomQuartier`, `fk_ville_quartier`) VALUES
-(1, 'Millénaire', 1),
-(2, 'Odysseum', 1),
-(3, 'Paillade', 1),
-(4, '1er arrondissement', 2),
-(5, '2ème arrondissement', 2),
-(6, '3ème arrondissement', 2);
+(1, 'Millénaire', 34000),
+(2, 'Odysseum', 34000),
+(3, 'Paillade', 34000),
+(4, '1er arrondissement', 75000),
+(5, '2ème arrondissement', 75000),
+(6, '3ème arrondissement', 75000);
 
 -- --------------------------------------------------------
 
@@ -150,18 +150,18 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `adress`, `phone`, `mail`, `pays`, `
 
 DROP TABLE IF EXISTS `villes`;
 CREATE TABLE IF NOT EXISTS `villes` (
-  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
+  `cpVille` int(5) NOT NULL AUTO_INCREMENT,
   `nomVille` varchar(180) NOT NULL,
-  PRIMARY KEY (`id_ville`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`cpVille`)
+) ENGINE=InnoDB AUTO_INCREMENT=75001 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `villes`
 --
 
-INSERT INTO `villes` (`id_ville`, `nomVille`) VALUES
-(1, 'Montpellier'),
-(2, 'Paris');
+INSERT INTO `villes` (`cpVille`, `nomVille`) VALUES
+(34000, 'Montpellier'),
+(75000, 'Paris');
 
 --
 -- Contraintes pour les tables déchargées
@@ -173,7 +173,7 @@ INSERT INTO `villes` (`id_ville`, `nomVille`) VALUES
 ALTER TABLE `appartements`
   ADD CONSTRAINT `APPARTEMENTS_QUARTIERS0_FK` FOREIGN KEY (`FK_QUARTIERS`) REFERENCES `quartiers` (`id_quartier`),
   ADD CONSTRAINT `APPARTEMENTS_USERS_FK` FOREIGN KEY (`FK_USERS`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `APPARTEMENTS_VILLES1_FK` FOREIGN KEY (`FK_VILLES`) REFERENCES `villes` (`id_ville`);
+  ADD CONSTRAINT `APPARTEMENTS_VILLES1_FK` FOREIGN KEY (`FK_VILLES`) REFERENCES `villes` (`cpVille`);
 
 --
 -- Contraintes pour la table `habite`
@@ -186,7 +186,7 @@ ALTER TABLE `habite`
 -- Contraintes pour la table `quartiers`
 --
 ALTER TABLE `quartiers`
-  ADD CONSTRAINT `QUARTIERS_VILLES_FK` FOREIGN KEY (`fk_ville_quartier`) REFERENCES `villes` (`id_ville`);
+  ADD CONSTRAINT `QUARTIERS_VILLES_FK` FOREIGN KEY (`fk_ville_quartier`) REFERENCES `villes` (`cpVille`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

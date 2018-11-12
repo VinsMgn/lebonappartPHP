@@ -1,5 +1,5 @@
 <?php
-require_once("../controller/listOfApparts.php");
+require_once("../controller/listOfAppartsUser.php");
 
 
 ?><h1> Liste de mes apartements</h1>
@@ -7,8 +7,10 @@ require_once("../controller/listOfApparts.php");
     </button>
 <?php
 foreach ($lobjApparts as $lobjAppart) {
-        ?>
+    if ($lobjAppart->FK_USERS == $_SESSION['id']) {
 
+        ?>
+        
         <div>
             <br>
             <div>
@@ -57,4 +59,5 @@ foreach ($lobjApparts as $lobjAppart) {
         </div>
 
         <?php
+    }
 };
