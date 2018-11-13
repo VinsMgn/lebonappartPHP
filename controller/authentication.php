@@ -40,7 +40,7 @@ if (isset($_POST) && count($_POST) > 0){
         // On ne trouve pas l'utilisateur, il retourne à la page de login avec une erreur que l'on traite plus haut
         header('Location: ../controller/authentication.php?error=1');
     }else{
-        // On trouve l'utilisateur, on stocke son id dans la variable session et on le redirige sur l'accueil
+        // On trouve l'utilisateur, on stocke son id dans la variable session et on le redirige sur l'accueil, on stocke aussi l'id de l'appartement lié au user
         $_SESSION['id'] = $user->id;
         var_dump($_SESSION['id']);
         if( strpos($QRY_STR, 'RQT_URL')){

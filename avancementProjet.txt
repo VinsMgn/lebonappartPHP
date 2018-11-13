@@ -1,15 +1,5 @@
-Il reste à faire :
-- Du design (simpliste qui doit fonctionner on l'arrangera pour le BTS)
+Il reste à :
 
-- Requête de sélection à la connexion
-	- Sélection de l'appartement de l'utilisateur connecté
-	- Toutes les informations liées à l'appartement
-
-- Procédures stockées :
-	- Sélectionner les appartements de l'utilisateur une fois qu'il est connecté
-	- Faire les fonctions de recherche et/ou de tri selon les villes / quartiers (sélection des appartements dans les villes et les quartiers)
-
-- Triggers :
-	- A l'insertion, vérifier que l'utilsateur n'existe pas déjà avec son adresse mail
-	- A l'echange, vérifier que le solde est suffisant pour que l'utilisateur puisse faire la transaction et passer les dates aux dates choisies
-- Finir la partie view de l'update, faire le delete (view + controller), debug l'insertion (le formulaire ne s'envoie pas)
+- Faire du design (simpliste qui doit fonctionner on l'arrangera pour le BTS)
+- Gérer l'insertion dans la table habite
+- Gérer les transactions et la validation

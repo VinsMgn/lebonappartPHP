@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 12 nov. 2018 à 09:26
+-- Généré le :  lun. 12 nov. 2018 à 21:19
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `lebonappart`
 --
+
+DELIMITER $$
+--
+-- Procédures
+--
+DROP PROCEDURE IF EXISTS `selectUserDetail`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selectUserDetail` (IN `idUser` INT(11))  NO SQL
+select users.nom, users.prenom, villes.nomVille, quartiers.nomQuartier
+from appartements, habite, users, villes, quartiers
+where appartements.id_appartement = habite.idApparthabite
+and users.id = idUser
+and villes.cpVille = appartements.FK_VILLES
+and quartiers.id_quartier = appartements.FK_QUARTIERS$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -49,16 +64,36 @@ CREATE TABLE IF NOT EXISTS `appartements` (
   KEY `APPARTEMENTS_USERS_FK` (`FK_USERS`),
   KEY `APPARTEMENTS_QUARTIERS0_FK` (`FK_QUARTIERS`),
   KEY `APPARTEMENTS_VILLES1_FK` (`FK_VILLES`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `appartements`
 --
 
 INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
-(1, 600, 'studio 20m²', 'neuf', 1, 20, 0, '200', '06/04/2016', '31/08/2019', 'Location interessante', 0, 2, 1, 34000),
-(2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 34000),
-(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000);
+(1, 100, 'Appartement tout neuf', 'Rénové', 3, 50, 1, '300', '20/11/1996', '13/02/2019', 'Appartement T3 rénové comme neuf', 0, 1, 1, 34000);
+
+--
+-- Déclencheurs `appartements`
+--
+DROP TRIGGER IF EXISTS `deleteHabite`;
+DELIMITER $$
+CREATE TRIGGER `deleteHabite` BEFORE DELETE ON `appartements` FOR EACH ROW BEGIN
+
+DELETE FROM `habite` WHERE habite.FK_USERS_HABITE = OLD.FK_USERS;
+
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `historiqueAppart`;
+DELIMITER $$
+CREATE TRIGGER `historiqueAppart` BEFORE DELETE ON `appartements` FOR EACH ROW BEGIN
+
+INSERT INTO `historique`(`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES (OLD.id_appartement, OLD.prix, OLD.description, OLD.etat, OLD.nbPiece, OLD.surface, OLD.meuble, OLD.ind_energie, OLD.dateCreation, OLD.dateExpiration, OLD.message, OLD.statut, OLD.FK_USERS, OLD.FK_QUARTIERS, OLD.FK_VILLES);
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -68,20 +103,59 @@ INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nb
 
 DROP TABLE IF EXISTS `habite`;
 CREATE TABLE IF NOT EXISTS `habite` (
-  `id_habite` int(11) NOT NULL,
+  `idApparthabite` int(11) NOT NULL AUTO_INCREMENT,
   `FK_USERS_HABITE` int(11) NOT NULL,
   `dateVente` varchar(180) NOT NULL,
-  PRIMARY KEY (`id_habite`,`FK_USERS_HABITE`),
+  PRIMARY KEY (`idApparthabite`) USING BTREE,
   KEY `habite_USERS0_FK` (`FK_USERS_HABITE`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `habite`
 --
 
-INSERT INTO `habite` (`id_habite`, `FK_USERS_HABITE`, `dateVente`) VALUES
-(1, 1, '06/10/2016'),
-(2, 2, '20/11/2018');
+INSERT INTO `habite` (`idApparthabite`, `FK_USERS_HABITE`, `dateVente`) VALUES
+(1, 1, '06/05/2017');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `historique`
+--
+
+DROP TABLE IF EXISTS `historique`;
+CREATE TABLE IF NOT EXISTS `historique` (
+  `id_appartement` int(11) NOT NULL AUTO_INCREMENT,
+  `prix` int(11) NOT NULL,
+  `description` varchar(180) NOT NULL,
+  `etat` varchar(180) NOT NULL,
+  `nbPiece` int(11) NOT NULL,
+  `surface` int(11) NOT NULL,
+  `meuble` tinyint(1) NOT NULL,
+  `ind_energie` varchar(180) NOT NULL,
+  `dateCreation` varchar(180) NOT NULL,
+  `dateExpiration` varchar(180) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `statut` tinyint(1) NOT NULL,
+  `FK_USERS` int(11) NOT NULL,
+  `FK_QUARTIERS` int(11) NOT NULL,
+  `FK_VILLES` int(11) NOT NULL,
+  PRIMARY KEY (`id_appartement`),
+  KEY `APPARTEMENTS_USERS_FK` (`FK_USERS`),
+  KEY `APPARTEMENTS_QUARTIERS0_FK` (`FK_QUARTIERS`),
+  KEY `APPARTEMENTS_VILLES1_FK` (`FK_VILLES`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `historique`
+--
+
+INSERT INTO `historique` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
+(1, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 1, 2, 1, 34000),
+(2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 34000),
+(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000),
+(4, 1000, 'fezfe', 'fzeze', 5, 1000, 0, 'fezz', 'dzaz', 'feazea', 'feafaezfez', 1, 1, 1, 34000),
+(5, 1000, 'hyttrhy', 'htthrhterh', 5, 1220, 0, 'feafa', 'feaeffe', 'fzedfz', 'fezefzfe', 1, 1, 1, 34000);
 
 -- --------------------------------------------------------
 
@@ -179,7 +253,6 @@ ALTER TABLE `appartements`
 -- Contraintes pour la table `habite`
 --
 ALTER TABLE `habite`
-  ADD CONSTRAINT `habite_APPARTEMENTS_FK` FOREIGN KEY (`id_habite`) REFERENCES `appartements` (`id_appartement`),
   ADD CONSTRAINT `habite_USERS0_FK` FOREIGN KEY (`FK_USERS_HABITE`) REFERENCES `users` (`id`);
 
 --

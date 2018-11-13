@@ -1,14 +1,22 @@
 <?php
-require_once("../controller/listOfApparts.php");
+require_once("../controller/listOfAppartsUser.php");
 
 
-?><h1> Liste des apartements</h1>
-
+if (!isset($lobjAppart)){
+    ?><h1> Vous n'avez pas d'appartement. Veuillez en ajouter</h1><?php
+} else {
+    ?><h1> Mon appartement</h1><?php
+}?>
+    <button><a href="../controller/insertAppart.php" style="text-decoration: none; color: black">Ajouter un nouveau logement</a></button>
+    <button><a href="../controller/updateAppart.php" style="text-decoration: none; color: black">Modifier les informations sur mon logement</a></button>
+    <button><a href="../controller/deleteAppart.php" style="text-decoration: none; color: black">Supprimer mon logement</a></button>
 <?php
 
 foreach ($lobjApparts as $lobjAppart) {
-   ?>
+    if ($lobjAppart->FK_USERS == $_SESSION['id']) {
 
+
+        ?>
 
         <div>
             <br>
@@ -58,4 +66,5 @@ foreach ($lobjApparts as $lobjAppart) {
         </div>
 
         <?php
+    }
 };
