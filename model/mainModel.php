@@ -41,7 +41,62 @@ function authenticate($lstrMail,$lstrPassword){
     }
         return $lobjUser;
 
-   
+}
+
+
+
+
+
+function GetCity($cp){
+    $bdd = GetDataBase();
+    $lobjCity = false;
+
+    if ($bdd) {
+        //Connexion ok, préparation de la requête
+        $lstrQuery = "SELECT * FROM VILLES WHERE cp_ville = :pCp ";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pCp', $cp);
+        $stmt->execute();
+        $lobjCity =  $stmt->fetch(PDO::FETCH_OBJ);;
+    }
+    
+    return $lobjCity;
+}
+
+function GetQuartierByCity($cp, $nom){
+    $bdd = GetDataBase();
+    $lobjQuart = false;
+
+    if ($bdd) {
+        //Connexion ok, préparation de la requête
+        $lstrQuery = "SELECT * FROM QUARTIERS WHERE fk_ville_quartier = :pCp AND nomQuartier = :pNom";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pCp', $cp);
+        $stmt->bindParam(':pNom', $nom);
+        $stmt->execute();
+        $lobjQuart =  $stmt->fetch(PDO::FETCH_OBJ);;
+    }
+
+    return $lobjQuart;
+}
+
+function GetVilles(){
+
+}
+
+function GetQuartiers(){
+    $bdd = GetDataBase();
+    $lobjQuart = false;
+
+    if ($bdd) {
+        //Connexion ok, préparation de la requête
+        $lstrQuery = "SELECT * FROM QUARTIERS";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->execute();
+        $lobjQuart =  $stmt->fetchAll(PDO::FETCH_OBJ);;
+    }
+
+    return $lobjQuart;
 }
 
 //Affichage d'un utilisateur
