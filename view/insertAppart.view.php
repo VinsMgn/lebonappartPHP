@@ -4,94 +4,107 @@
 //Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
 //require_once("../controller/insertAppart.php");
 ?>
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+</head>
 <h1> Ajout d'un appartement à la plateforme</h1>
 
 <div class="formcontainer">
 
     <form method="POST" action="">
-<!--        <div class="input-field">-->
-<!--            <label for="id" class="">Identifiant-->
-<!--                <input  name="id" type="text">-->
-<!--            </label>-->
-<!--        </div>-->
+        <!--        <div class="input-field">-->
+        <!--            <label for="id" class="">Identifiant-->
+        <!--                <input  name="id" type="text">-->
+        <!--            </label>-->
+        <!--        </div>-->
         <div class="input-field">
             <label for="prix" class=""> Prix
-                <input  name="prix" type="text">
+                <input name="prix" type="text">
             </label>
         </div>
 
         <div class="input-field">
             <label for="description" class="">Description
-                <input  name="description" type="text">
+                <input name="description" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="etat" class=""> Etat
-                <input  name="etat" type="text">
+                <input name="etat" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="nbPiece" class=""> Nombre de pièces
-                <input  name="nbPiece" type="text">
+                <input name="nbPiece" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="surface" class=""> Surface
-                <input  name="surface" type="text">
+                <input name="surface" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="meuble" class=""> Meublé
-                <input  name="meuble" type="text">
+                <input name="meuble" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="indEnergy" class=""> Indice énergie
-                <input  name="indEnergy" type="text">
+                <input name="indEnergy" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="creation" class=""> Création
-                <input  name="creation" type="text">
+                <input name="creation" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="expiration" class=""> Expiration
-                <input  name="expiration" type="text">
+                <input name="expiration" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="message" class=""> Message
-                <input  name="message" type="text">
+                <input name="message" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="statut" class=""> Statut
-                <input  name="statut" type="text">
+                <input name="statut" type="text">
             </label>
         </div>
         <div class="input-field">
             <label for="user" class="" hidden="hidden"> Id User
-                <input  name="user" type="text" value="<?php $_SESSION['id'];?>">
+                <input name="user" type="text" value="<?php $_SESSION['id']; ?>">
+            </label>
+        </div>
+
+        <div class="input-field">
+            <label for="town" class=""> CP Ville
+                <input name="town" id="cpInput" type="text">
             </label>
         </div>
         <div class="input-field">
-            <label for="quartier" class=""> Id Quartier
-                <input  name="quartier" type="text">
+            <label for="quartier"> Nom Quartier
+                <input name="quartier" type="text">
             </label>
         </div>
-        <div class="input-field">
-            <label for="town" class=""> Id Ville
-                <input  name="town" type="text">
+        <div id="quartInput" class="quartInput-unpinned">
+            <label for="expiration" class="">
+                <select name="quartier" id="quartSelect">
+
+
+                </select>
             </label>
         </div>
         <div class="input-field">
             <label for="submit" class="">
-                <input  name="submit" type="submit" value="Enregistrer">
+                <input name="submit" type="submit" value="Enregistrer">
             </label>
         </div>
     </form>
-    <button> <a href = "../controller/listOfApparts.php" style="text-decoration: none; color: black" >Retour</a></button>
+    <button><a href="../controller/listOfApparts.php" style="text-decoration: none; color: black">Retour</a></button>
 </div>
 
+<script src="/assets/main.js"></script>
