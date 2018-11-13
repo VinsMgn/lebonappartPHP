@@ -289,3 +289,39 @@ function DeleteAppart($id){
 
     return $lboolOk;
 }
+
+//Fonction de recherche
+function SearchCity($lstrSearch){
+    $lobjAppart = null;
+
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "Select * from villes WHERE nomVille LIKE :pSearch";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pSearch', $lstrSearch);
+        $stmt->execute();
+
+        $lobjAppart = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    return $lobjAppart;
+}
+
+//Afficher les appartements par ville
+function GetAppartsByCity($city){
+
+    $lobjAppartByCity = null;
+
+    $bdd = GetDataBase();
+
+    if ($bdd) {
+        $lstrQuery = "SELECT * FROM appartements where FK_VILLES = :pIdCity";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pIdCity', $city);
+        $stmt->execute();
+
+        $lobjAppartByCity = $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    return $lobjAppartByCity;
+}
