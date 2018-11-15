@@ -35,6 +35,7 @@ if (isset($_POST) && count($_POST) > 0){
 
     //Requête de BDD pour récupérer l'utilisateur
     $user = authenticate($mail,$password);
+   
     // Vérifie si l'utilisateur est enregistré
     if($user  == null){
         // On ne trouve pas l'utilisateur, il retourne à la page de login avec une erreur que l'on traite plus haut
@@ -42,6 +43,7 @@ if (isset($_POST) && count($_POST) > 0){
     }else{
         // On trouve l'utilisateur, on stocke son id dans la variable session et on le redirige sur l'accueil, on stocke aussi l'id de l'appartement lié au user
         $_SESSION['id'] = $user->id;
+        $_SESSION['isAdmin'] = $user->isAdmin;
         var_dump($_SESSION['id']);
         if( strpos($QRY_STR, 'RQT_URL')){
             $url = substr($QRY_STR,'RQT_URL=');

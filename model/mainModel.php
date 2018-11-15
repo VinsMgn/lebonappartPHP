@@ -115,16 +115,15 @@ function GetUser($lIdUser)
 }
 
 //Insertion d'un utilisateur
-function InsertUser($id, $name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type)
+function InsertUser( $name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type, $isAdmin)
 {
     $bdd = GetDataBase();
     $lboolOk = false;
 
     if ($bdd) {
         //Connexion ok, préparation de la requête
-        $lstrQuery = "INSERT INTO users (id, nom, prenom, adress, phone, mail, pays, solde, password, type) VALUES (:pId, :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType)";
+        $lstrQuery = "INSERT INTO users ( nom, prenom, adress, phone, mail, pays, solde, password, type, isAdmin) VALUES ( :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType, :pIsAdmin)";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pId', $id);
         $stmt->bindParam(':pNom', $name);
         $stmt->bindParam(':pPrneom', $firstname);
         $stmt->bindParam(':pAdress', $address);
@@ -134,6 +133,7 @@ function InsertUser($id, $name, $firstname, $address, $phone, $mail, $pays, $sol
         $stmt->bindParam(':pSolde', $solde);
         $stmt->bindParam(':pPassword', $password);
         $stmt->bindParam(':pType', $type);
+        $stmt->bindParam(':pIsAdmin', $isAdmin);
 
         $stmt->execute();
         $lboolOk = true;
@@ -150,7 +150,7 @@ function UpdateUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
     $bdd = GetDataBase();
 
     if ($bdd) {
-        $lstrQuery = "UPDATE users SET nom=:pName, prenom=:pFirstname, adress=:pAddress, phone = :pPhone, mail = :pMail, pays = :pPays, solde = :pSolde, password = :pPassword, type = :pType WHERE id = :pId";
+        $lstrQuery = "UPDATE users SET nom=:pName, prenom=:pFirstname, adress=:pAddress, phone = :pPhone, mail = :pMail, pays = :pPays, solde = :pSolde, isAdmin = :pIsAdmin password = :pPassword, type = :pType WHERE id = :pId";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pName',$name);
         $stmt->bindParam(':pFirstname',$firstname);
@@ -162,6 +162,7 @@ function UpdateUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
         $stmt->bindParam(':pPassword',$password);
         $stmt->bindParam(':pType',$type);
         $stmt->bindParam(':pId',$id);
+        $stmt->bindParam(':pIsAdmin',$isAdmin);
 
         $stmt->execute();
 
@@ -318,7 +319,31 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
     return $lboolOk;
 }
+function UpdateAppartAdmin($prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut){
+    $lboolOk = false;
 
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "UPDATE appartements SET prix = :pPrix, description = :pDescription, etat = :pEtat, nbPiece = :pNbPiece, surface = :pSurface, meuble = :pMeuble, ind_energie = :pIndEnergy, dateCreation = :pCreation, dateExpiration = :pExpiration, message = :pMessage, statut =:pStatut";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pPrix', $prix);
+        $stmt->bindParam(':pDescription', $description);
+        $stmt->bindParam(':pEtat', $etat);
+        $stmt->bindParam(':pNbPiece', $nbPiece);
+        $stmt->bindParam(':pSurface', $surface);
+        $stmt->bindParam(':pMeuble', $meuble);
+        $stmt->bindParam(':pIndEnergy', $indEnergy);
+        $stmt->bindParam(':pCreation', $creation);
+        $stmt->bindParam(':pExpiration', $expiration);
+        $stmt->bindParam(':pMessage', $message);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+
+    return $lboolOk;
+}
 
 //Suppression d'un appartement
 function DeleteAppart($id){

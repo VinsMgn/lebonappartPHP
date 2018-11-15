@@ -3,27 +3,36 @@ $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
 
 
 function AuthGuard($qryUrl){
+    $auth = false;
+    $isAdmin;
+    
+var_dump($_SESSION);
 
     if(isset($_SESSION) && count($_SESSION) > 0){
-        if($_SESSION['id']){
+        var_dump($qryUrl);
+        if($_SESSION['id'] ){
             
-        }else{
-           //if($qryUrl){
-           // var_dump($qryUrl, 'here');
+            $isAdmin = $_SESSION['isAdmin'];
 
-           // header('Location: /controller/authentication.php?RQT_URL='+$qryUrl);
-           //}else{
+            if(strpos($qryUrl,'admin') ){
+                if($isAdmin == '1'){
+                    $auth = true;
+                    var_dump('here');
+                }else{
+                    $auth = true;
+                    header('Location: /index.php?error=2');   
+                    var_dump('here it');
+                }
+                
+            }else{
+                $auth = true;
+            }
+        }else{
             header('Location: /controller/authentication.php');
-           //}
-            
         }
 
     }else{
-        //if($qryUrl){
-        //    var_dump($qryUrl, 'here');
-        //header("'Location: /controller/authentication.php?RQT_URL='+$qryUrl");
-        //}else{
-            header('Location: /controller/authentication.php');
-        //}
+        header('Location: /controller/authentication.php');
     }
+
 }

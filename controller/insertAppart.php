@@ -4,10 +4,17 @@ require_once ("../helper/authGuard.php");
 $RQT_URL = $_SERVER['REQUEST_URI'];
 
 session_start();
-require_once ("../view/insertAppart.view.php");
 
 AuthGuard($RQT_URL);
-
+if(isset($_SESSION)){
+    if($_SESSION['id']){
+        $userAppart = GetAppartByUser($_SESSION['id']);
+    }
+    if($userAppart != null){
+        header('Location: /controller/listOfAppartsUser.php?error=3');
+        
+    }
+}
 
 if (isset($_POST) && count($_POST) > 0){
     $quartier = GetQuartierByCity($_POST['town'], $_POST['quartier']);
