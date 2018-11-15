@@ -43,17 +43,13 @@ function authenticate($lstrMail,$lstrPassword){
 
 }
 
-
-
-
-
 function GetCity($cp){
     $bdd = GetDataBase();
     $lobjCity = false;
 
     if ($bdd) {
         //Connexion ok, préparation de la requête
-        $lstrQuery = "SELECT * FROM VILLES WHERE cp_ville = :pCp ";
+        $lstrQuery = "SELECT * FROM VILLES WHERE cpVille = :pCp ";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pCp', $cp);
         $stmt->execute();
@@ -63,16 +59,15 @@ function GetCity($cp){
     return $lobjCity;
 }
 
-function GetQuartierByCity($cp, $nom){
+function GetQuartierByCity($cp){
     $bdd = GetDataBase();
     $lobjQuart = false;
 
     if ($bdd) {
         //Connexion ok, préparation de la requête
-        $lstrQuery = "SELECT * FROM QUARTIERS WHERE fk_ville_quartier = :pCp AND nomQuartier = :pNom";
+        $lstrQuery = "SELECT * FROM QUARTIERS WHERE fk_ville_quartier = :pCp";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pCp', $cp);
-        $stmt->bindParam(':pNom', $nom);
         $stmt->execute();
         $lobjQuart =  $stmt->fetch(PDO::FETCH_OBJ);;
     }
@@ -206,7 +201,6 @@ function DeleteUser($id){
     return $lboolOk;
 }
 
-//Fonctions Vincent
 //Affichage d'un appartement selon l'utilisateur connecté
 function GetAppartByUser($idUser)
 {
@@ -226,7 +220,7 @@ function GetAppartByUser($idUser)
     return $lobjAppart;
 }
 
-//Fonctions Vincent
+
 //Affichage d'un appartement avec son id
 function GetAppart($idAppart)
 {
@@ -326,7 +320,6 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 }
 
 
-//Fonctions Vincent
 //Suppression d'un appartement
 function DeleteAppart($id){
     $lboolOk = false;
