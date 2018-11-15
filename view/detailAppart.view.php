@@ -8,7 +8,7 @@ require_once("../controller/detailAppart.php");
 if ($lobjAppart) {
     ?>
     <div>
-        Prix : <?php echo($lobjAppart->prix); ?> euros
+        Prix : <?php echo($lobjAppart->prix); ?> jetons
     </div>
     <div>
         Description : <?php echo($lobjAppart->description); ?>
@@ -48,7 +48,8 @@ if ($lobjAppart) {
         }; ?>
     </div>
     <div>
-        Occupé par : <?php echo($lobjUser->nom); echo(" ".$lobjUser->prenom); ?>
+        Propriétaire : <?php echo($lobjUser->nom);
+        echo(" " . $lobjUser->prenom); ?>
     </div>
     <div>
         Ville : <?php echo($lobjCity->nomVille); ?>
@@ -57,5 +58,6 @@ if ($lobjAppart) {
         Quartier : <?php echo($lobjQuartier->nomQuartier); ?>
     </div>
     <br><br>
-    <button> Ce logement m'intéresse</button>
+
+    <button><a href="../controller/detailProprietaire.php?id=<?php echo($lobjAppart->FK_USERS) ?>">Ce logement m'intéresse</a></button>
 <?php }

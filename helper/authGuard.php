@@ -6,10 +6,10 @@ function AuthGuard($qryUrl){
     $auth = false;
     $isAdmin;
     
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
     if(isset($_SESSION) && count($_SESSION) > 0){
-        var_dump($qryUrl);
+//        var_dump($qryUrl);
         if($_SESSION['id'] ){
             
             $isAdmin = $_SESSION['isAdmin'];
@@ -17,11 +17,11 @@ var_dump($_SESSION);
             if(strpos($qryUrl,'admin') ){
                 if($isAdmin == '1'){
                     $auth = true;
-                    var_dump('here');
+//                    var_dump('here');
                 }else{
                     $auth = true;
                     header('Location: /index.php?error=2');   
-                    var_dump('here it');
+//                    var_dump('here it');
                 }
                 
             }else{

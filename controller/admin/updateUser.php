@@ -1,7 +1,7 @@
 <?php
-//Appel au modèle
-require_once("../model/mainModel.php");
-require_once ("../helper/authGuard.php");
+
+require_once("../../model/mainModel.php");
+require_once("../../helper/authGuard.php");
 $RQT_URL = $_SERVER['REQUEST_URI'];
 session_start();
 AuthGuard($RQT_URL);
@@ -16,13 +16,11 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if($lboolOk = true){
         echo("La modification s'est bien déroulée");
-        //Retour vers le profil actualisé (Header ou require de la vue ?)
     }else{
         echo("Echec de la modification");
-        //Retour aux anciennes modifications + erreur
     }
 
 }
 
 //Appel à la vue
-require_once("../view/updateUser.view.php");
+require_once("../../view/updateUser.view.php");

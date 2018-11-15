@@ -18,11 +18,13 @@ if(isset($_SESSION)){
 
 if (isset($_POST) && count($_POST) > 0){
     $quartier = GetQuartierByCity($_POST['town'], $_POST['quartier']);
-    $lboolOk = AddAppart( $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'], $_POST['meuble'], $_POST['indEnergy'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $_POST['statut'], $_SESSION['id'],$quartier->id_quartier , $_POST['town']);
+    $lboolOk = AddAppart( $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'], $_POST['meuble'], $_POST['indEnergie'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $_POST['statut'], $_SESSION['id'],$quartier->id_quartier , $_POST['town']);
 
     if ($lboolOk == true){
-        echo("L'ajout s'est bien déroulé");
+        header('Location: ../view/profil.php');
+//        echo("L'ajout s'est bien déroulé");
     }else{
+        header('Location: insertAppart.php');
         echo("L'ajout n'a pas fonctionné");
     }
 }

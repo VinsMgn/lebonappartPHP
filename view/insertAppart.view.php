@@ -49,7 +49,7 @@
         </div>
         <div class="input-field">
             <label for="meuble" class=""> Indice énergie
-                <select name="meuble">
+                <select name="indEnergie">
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>

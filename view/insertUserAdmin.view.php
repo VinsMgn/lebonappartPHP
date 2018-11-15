@@ -1,10 +1,3 @@
-<?php
-//$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-
-//Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
-
-?>
-
 <h1> Inscription à la plateforme</h1>
 
 <div class="formcontainer">
@@ -70,6 +63,6 @@
             <option value="1">Oui</option>
         </select>
     </form>
-    <button> <a href = "../controller/listOfUsers.php" style="text-decoration: none; color: black" >Retour</a></button>
+    <button> <a href = "../admin/listOfUsers.php" style="text-decoration: none; color: black" >Retour</a></button>
 </div>
 

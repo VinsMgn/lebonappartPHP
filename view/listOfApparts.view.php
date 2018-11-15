@@ -3,8 +3,10 @@ require_once("../controller/listOfApparts.php");
 
 
 ?><h1> Liste des apartements</h1>
-<!--Formulaire de recherche par ville-->
-<p> Rechercher une ville</p>
+
+    <button><a href="/view/profil.php"> Voir mon profil </a></button>
+    <!--Formulaire de recherche par ville-->
+    <h2> Rechercher un appartement dans une ville</h2>
 
 
     <form method="POST" action="../controller/listOfApparts.php">
@@ -17,7 +19,7 @@ require_once("../controller/listOfApparts.php");
             </label>
         </div>
         <div>
-            <label id = "submit">
+            <label id="submit">
                 <input type="submit" name="submit" value="Rechercher">
             </label>
         </div>
@@ -74,7 +76,8 @@ foreach ($lobjApparts as $lobjAppart) {
         <br>
 
         <div>
-            <button> <a href="../controller/detailAppart.php?id=<?php echo($lobjAppart->id_appartement) ?>" style="">Voir les informations de cet appartement </a> </button>
+            <button><a href="../controller/detailAppart.php?id=<?php echo($lobjAppart->id_appartement) ?>" style="">Voir
+                    les informations de cet appartement </a></button>
         </div>
         <!--        <button> <a href = "../controller/updateUser.php" style="text-decoration: none; color: black">Modifier</a></button>-->
         <!--        <button> <a href = "../controller/deleteUser.php" style="text-decoration: none; color: black" >Supprimer</a></button>-->

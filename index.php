@@ -9,7 +9,7 @@
     if($QRY_STR == 'error=2'){
         echo("Vous n'êtes pas administrateur ! ");
     }
-    var_dump($_SESSION)
+//    var_dump($_SESSION)
 ?>
 
 <button><a href="/view/admin.php"> Vous êtes un administrateur </a></button>

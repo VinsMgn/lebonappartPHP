@@ -1,6 +1,6 @@
 <?php
-require_once ("../model/mainModel.php");
-require_once ("../helper/authGuard.php");
+require_once ("../../model/mainModel.php");
+require_once ("../");
 //$RQT_URL = $_SERVER['REQUEST_URI'];
 
 session_start();
@@ -35,4 +35,4 @@ if (isset($_POST) && count($_POST)){
     }
 }
 
-require_once ("../view/updateAppart.view.php");
+require_once ("../../view/updateAppart.view.php");
