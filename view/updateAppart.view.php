@@ -39,8 +39,8 @@ if ($lobjAppart) {
             <div class="input-field">
                 <label for="meuble" class=""> Meublé
                     <select name="meuble">
-                        <option value="oui">Oui</option>
-                        <option value="non">Non</option>
+                        <option value="1">Oui</option>
+                        <option value="0">Non</option>
                     </select>
                 </label>
             </div>
@@ -67,8 +67,8 @@ if ($lobjAppart) {
             <div class="input-field">
                 <label for="expiration" class=""> Statut
                     <select name="statut">
-                        <option value="occupe">Occupé</option>
-                        <option value="disponible">Disponible</option>
+                        <option value="1">Occupé</option>
+                        <option value="0">Disponible</option>
                     </select>
                 </label>
             </div>

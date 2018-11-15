@@ -13,11 +13,6 @@
 <div class="formcontainer">
 
     <form method="POST" action="">
-        <!--        <div class="input-field">-->
-        <!--            <label for="id" class="">Identifiant-->
-        <!--                <input  name="id" type="text">-->
-        <!--            </label>-->
-        <!--        </div>-->
         <div class="input-field">
             <label for="prix" class=""> Prix
                 <input name="prix" type="text">
@@ -46,21 +41,31 @@
         </div>
         <div class="input-field">
             <label for="meuble" class=""> Meublé
-                <input name="meuble" type="text">
+                <select name="meuble">
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                </select>
             </label>
         </div>
         <div class="input-field">
-            <label for="indEnergy" class=""> Indice énergie
-                <input name="indEnergy" type="text">
+            <label for="meuble" class=""> Indice énergie
+                <select name="meuble">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
             </label>
         </div>
         <div class="input-field">
-            <label for="creation" class=""> Création
+            <label for="creation" class=""> Début de la location
                 <input name="creation" type="text">
             </label>
         </div>
         <div class="input-field">
-            <label for="expiration" class=""> Expiration
+            <label for="expiration" class=""> Expiration de la location
                 <input name="expiration" type="text">
             </label>
         </div>
@@ -70,8 +75,11 @@
             </label>
         </div>
         <div class="input-field">
-            <label for="statut" class=""> Statut
-                <input name="statut" type="text">
+            <label for="expiration" class=""> Statut
+                <select name="statut">
+                    <option value="1">Occupé</option>
+                    <option value="0">Disponible</option>
+                </select>
             </label>
         </div>
         <div class="input-field">
@@ -81,20 +89,13 @@
         </div>
 
         <div class="input-field">
-            <label for="town" class=""> CP Ville
+            <label for="town" class=""> Code postal de la ville
                 <input name="town" id="cpInput" type="text">
             </label>
         </div>
-        <div class="input-field">
-            <label for="quartier"> Nom Quartier
-                <input name="quartier" type="text">
-            </label>
-        </div>
         <div id="quartInput" class="quartInput-unpinned">
-            <label for="expiration" class="">
+            <label for="expiration" class=""> Nom Quartier
                 <select name="quartier" id="quartSelect">
-
-
                 </select>
             </label>
         </div>

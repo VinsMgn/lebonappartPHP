@@ -10,8 +10,6 @@ AuthGuard($RQT_URL);
 
 
 if (isset($_POST) && count($_POST) > 0){
-    echo("coucou");
-    //Insertion de l'utilisateur
     $quartier = GetQuartierByCity($_POST['town'], $_POST['quartier']);
     $lboolOk = AddAppart( $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'], $_POST['meuble'], $_POST['indEnergy'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $_POST['statut'], $_SESSION['id'],$quartier->id_quartier , $_POST['town']);
 

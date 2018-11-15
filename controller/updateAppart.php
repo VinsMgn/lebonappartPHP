@@ -13,20 +13,9 @@ $lobjAppart = GetAppartByUser($lobjUser->id);
 
 
 if (isset($_POST) && count($_POST)){
-    if($_POST['meuble'] == "oui"){
-        $meuble = 1;
-    }else{
-        $meuble = 0;
-    }
-
-    if($_POST['statut'] == "occupe"){
-        $statut = 1;
-    }else{
-        $statut = 0;
-    }
 
     //Remplir les paramètres avec la view
-    $lboolOk = UpdateAppart($_SESSION['id'], $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'],$meuble, $_POST['ind_energie'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $statut);
+    $lboolOk = UpdateAppart($_SESSION['id'], $_POST['prix'], $_POST['description'], $_POST['etat'], $_POST['nbPiece'], $_POST['surface'],$_POST['meuble'], $_POST['ind_energie'], $_POST['creation'], $_POST['expiration'], $_POST['message'], $_POST['statut']);
 
     if($lboolOk == true){
         echo("La modification est effectuée");
