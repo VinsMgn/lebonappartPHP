@@ -1,6 +1,6 @@
 <?php
 require_once ("../model/mainModel.php");
-require_once ("../view/authentication.view.php");
+// require_once ("../view/authentication.view.php");
 
 
 $CUR_DIR = $_SERVER['REQUEST_URI'];
@@ -9,15 +9,11 @@ $QRY_STR = $_SERVER['QUERY_STRING'];
 
 session_start();
 
-//Traitement si l'utilisateur souhaite se déconnecter
-if($QRY_STR == 'disconnect'){
-    session_destroy();
-}
 
 // Traitement si l'utilisateur est déjà connecté;
 if(isset($_SESSION) && count($_SESSION) > 0 ){
     if($_SESSION['id']){
-        header('Location: ../index.php');
+        header('Location: ../welcome.php');
     }
   
 }
@@ -49,7 +45,7 @@ if (isset($_POST) && count($_POST) > 0){
             $url = substr($QRY_STR,'RQT_URL=');
             header('Location: ..'+$QRY_STR);
         }else{
-            header('Location: ../index.php');
+            header('Location: ../welcome.php');
         }
     
     }
