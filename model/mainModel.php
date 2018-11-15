@@ -120,16 +120,15 @@ function GetUser($lIdUser)
 }
 
 //Insertion d'un utilisateur
-function InsertUser($id, $name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type)
+function InsertUser( $name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type, $isAdmin)
 {
     $bdd = GetDataBase();
     $lboolOk = false;
 
     if ($bdd) {
         //Connexion ok, préparation de la requête
-        $lstrQuery = "INSERT INTO users (id, nom, prenom, adress, phone, mail, pays, solde, password, type) VALUES (:pId, :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType)";
+        $lstrQuery = "INSERT INTO users ( nom, prenom, adress, phone, mail, pays, solde, password, type, isAdmin) VALUES ( :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType, :pIsAdmin)";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pId', $id);
         $stmt->bindParam(':pNom', $name);
         $stmt->bindParam(':pPrneom', $firstname);
         $stmt->bindParam(':pAdress', $address);
@@ -139,6 +138,7 @@ function InsertUser($id, $name, $firstname, $address, $phone, $mail, $pays, $sol
         $stmt->bindParam(':pSolde', $solde);
         $stmt->bindParam(':pPassword', $password);
         $stmt->bindParam(':pType', $type);
+        $stmt->bindParam(':pIsAdmin', $isAdmin);
 
         $stmt->execute();
         $lboolOk = true;
@@ -155,7 +155,7 @@ function UpdateUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
     $bdd = GetDataBase();
 
     if ($bdd) {
-        $lstrQuery = "UPDATE users SET nom=:pName, prenom=:pFirstname, adress=:pAddress, phone = :pPhone, mail = :pMail, pays = :pPays, solde = :pSolde, password = :pPassword, type = :pType WHERE id = :pId";
+        $lstrQuery = "UPDATE users SET nom=:pName, prenom=:pFirstname, adress=:pAddress, phone = :pPhone, mail = :pMail, pays = :pPays, solde = :pSolde, isAdmin = :pIsAdmin password = :pPassword, type = :pType WHERE id = :pId";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pName',$name);
         $stmt->bindParam(':pFirstname',$firstname);
@@ -167,6 +167,7 @@ function UpdateUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
         $stmt->bindParam(':pPassword',$password);
         $stmt->bindParam(':pType',$type);
         $stmt->bindParam(':pId',$id);
+        $stmt->bindParam(':pIsAdmin',$isAdmin);
 
         $stmt->execute();
 
