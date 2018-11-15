@@ -12,7 +12,7 @@
     var_dump($_SESSION)
 ?>
 
-<button><a href="/view/panelAdmin.php"> Vous êtes un administrateur </a></button>
+<button><a href="/view/admin.php"> Vous êtes un administrateur </a></button>
 
 <button><a href="/view/profil.php"> Voir mon profil </a></button>
 

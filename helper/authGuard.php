@@ -14,7 +14,7 @@ var_dump($_SESSION);
             
             $isAdmin = $_SESSION['isAdmin'];
 
-            if(strpos($qryUrl,'Admin') ){
+            if(strpos($qryUrl,'admin') ){
                 if($isAdmin == '1'){
                     $auth = true;
                     var_dump('here');

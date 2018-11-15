@@ -319,7 +319,31 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
     return $lboolOk;
 }
+function UpdateAppartAdmin($prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut){
+    $lboolOk = false;
 
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "UPDATE appartements SET prix = :pPrix, description = :pDescription, etat = :pEtat, nbPiece = :pNbPiece, surface = :pSurface, meuble = :pMeuble, ind_energie = :pIndEnergy, dateCreation = :pCreation, dateExpiration = :pExpiration, message = :pMessage, statut =:pStatut";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pPrix', $prix);
+        $stmt->bindParam(':pDescription', $description);
+        $stmt->bindParam(':pEtat', $etat);
+        $stmt->bindParam(':pNbPiece', $nbPiece);
+        $stmt->bindParam(':pSurface', $surface);
+        $stmt->bindParam(':pMeuble', $meuble);
+        $stmt->bindParam(':pIndEnergy', $indEnergy);
+        $stmt->bindParam(':pCreation', $creation);
+        $stmt->bindParam(':pExpiration', $expiration);
+        $stmt->bindParam(':pMessage', $message);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+
+    return $lboolOk;
+}
 
 //Suppression d'un appartement
 function DeleteAppart($id){
