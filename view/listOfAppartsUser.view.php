@@ -1,12 +1,8 @@
 <?php
 require_once("../controller/listOfAppartsUser.php");
 
-
-if (isset($lobjAppart)){
-    ?><h1> Mon appartement</h1><?php
-} else {
-    ?><h1> Vous n'avez pas d'appartement. Veuillez en ajouter</h1><?php
-}?>
+?>
+<h1> Mon appartement</h1>
     <button><a href="../controller/insertAppart.php" style="text-decoration: none; color: black">Ajouter un nouveau logement</a></button>
     <button><a href="../controller/updateAppart.php" style="text-decoration: none; color: black">Modifier les informations sur mon logement</a></button>
     <button><a href="../controller/deleteAppart.php" style="text-decoration: none; color: black">Supprimer mon logement</a></button>
