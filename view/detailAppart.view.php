@@ -152,7 +152,7 @@ require('../helper/header.php')
                             ?>
                         </div>
                     </div>
-
+                    <button><a href="../controller/detailProprietaire.php?id=<?php echo($lobjAppart->FK_USERS) ?>">Ce logement m'intéresse</a></button>
                     <a href="../controller/listOfApparts.php" class="close">
                         <i class="far fa-times-circle"></i>
                     </a>
