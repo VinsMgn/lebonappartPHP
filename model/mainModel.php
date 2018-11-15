@@ -23,14 +23,15 @@ function GetDataBase()
 }
 
 //Authentification
-function authenticate($lstrMail,$lstrPassword){
+function authenticate($lstrMail, $lstrPassword)
+{
     $lobjUser = null;
     $bdd = GetDataBase();
 
 
     if ($bdd) {
         //Connexion done, request select
-        $lstrQuery = "SELECT * FROM users WHERE mail = :pMail AND password = :pPassword" ;
+        $lstrQuery = "SELECT * FROM users WHERE mail = :pMail AND password = :pPassword";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pMail', $lstrMail);
         $stmt->bindParam(':pPassword', $lstrPassword);
@@ -39,11 +40,12 @@ function authenticate($lstrMail,$lstrPassword){
 
         $lobjUser = $stmt->fetch(PDO::FETCH_OBJ);
     }
-        return $lobjUser;
+    return $lobjUser;
 
 }
 
-function GetCity($cp){
+function GetCity($cp)
+{
     $bdd = GetDataBase();
     $lobjCity = false;
 
@@ -53,13 +55,14 @@ function GetCity($cp){
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pCp', $cp);
         $stmt->execute();
-        $lobjCity =  $stmt->fetch(PDO::FETCH_OBJ);;
+        $lobjCity = $stmt->fetch(PDO::FETCH_OBJ);;
     }
-    
+
     return $lobjCity;
 }
 
-function GetQuartierByCity($cp){
+function GetQuartierByCity($cp)
+{
     $bdd = GetDataBase();
     $lobjQuart = false;
 
@@ -69,17 +72,19 @@ function GetQuartierByCity($cp){
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pCp', $cp);
         $stmt->execute();
-        $lobjQuart =  $stmt->fetch(PDO::FETCH_OBJ);;
+        $lobjQuart = $stmt->fetch(PDO::FETCH_OBJ);;
     }
 
     return $lobjQuart;
 }
 
-function GetVilles(){
+function GetVilles()
+{
 
 }
 
-function GetQuartiers(){
+function GetQuartiers()
+{
     $bdd = GetDataBase();
     $lobjQuart = false;
 
@@ -88,7 +93,7 @@ function GetQuartiers(){
         $lstrQuery = "SELECT * FROM QUARTIERS";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->execute();
-        $lobjQuart =  $stmt->fetchAll(PDO::FETCH_OBJ);;
+        $lobjQuart = $stmt->fetchAll(PDO::FETCH_OBJ);;
     }
 
     return $lobjQuart;
@@ -115,7 +120,7 @@ function GetUser($lIdUser)
 }
 
 //Insertion d'un utilisateur
-function InsertUser( $name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type, $isAdmin)
+function InsertUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $password, $type, $isAdmin)
 {
     $bdd = GetDataBase();
     $lboolOk = false;
@@ -152,31 +157,32 @@ function UpdateUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
     if ($bdd) {
         $lstrQuery = "UPDATE users SET nom=:pName, prenom=:pFirstname, adress=:pAddress, phone = :pPhone, mail = :pMail, pays = :pPays, solde = :pSolde, isAdmin = :pIsAdmin password = :pPassword, type = :pType WHERE id = :pId";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pName',$name);
-        $stmt->bindParam(':pFirstname',$firstname);
-        $stmt->bindParam(':pAddress',$address);
-        $stmt->bindParam(':pPhone',$phone);
-        $stmt->bindParam(':pMail',$mail);
-        $stmt->bindParam(':pPays',$pays);
-        $stmt->bindParam(':pSolde',$solde);
-        $stmt->bindParam(':pPassword',$password);
-        $stmt->bindParam(':pType',$type);
-        $stmt->bindParam(':pId',$id);
-        $stmt->bindParam(':pIsAdmin',$isAdmin);
+        $stmt->bindParam(':pName', $name);
+        $stmt->bindParam(':pFirstname', $firstname);
+        $stmt->bindParam(':pAddress', $address);
+        $stmt->bindParam(':pPhone', $phone);
+        $stmt->bindParam(':pMail', $mail);
+        $stmt->bindParam(':pPays', $pays);
+        $stmt->bindParam(':pSolde', $solde);
+        $stmt->bindParam(':pPassword', $password);
+        $stmt->bindParam(':pType', $type);
+        $stmt->bindParam(':pId', $id);
+        $stmt->bindParam(':pIsAdmin', $isAdmin);
 
         $stmt->execute();
 
-        $lboolOk=true;
+        $lboolOk = true;
     }
     return $lboolOk;
 }
 
 //Affichage de tous les utilisateurs
-function GetUsers(){
+function GetUsers()
+{
     //Connexion à la base de données
     $bdd = GetDataBase();
 
-    if($bdd){
+    if ($bdd) {
         $lstrQuery = "SELECT * FROM users";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->execute();
@@ -187,14 +193,15 @@ function GetUsers(){
 }
 
 //Suppression des utilisateurs
-function DeleteUser($id){
+function DeleteUser($id)
+{
     $lboolOk = false;
     $bdd = GetDataBase();
 
-    if($bdd){
+    if ($bdd) {
         $lstrQuery = "DELETE FROM users WHERE id = :pId";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pId',$id);
+        $stmt->bindParam(':pId', $id);
         $stmt->execute();
 
         $lboolOk = true;
@@ -221,7 +228,6 @@ function GetAppartByUser($idUser)
     return $lobjAppart;
 }
 
-
 //Affichage d'un appartement avec son id
 function GetAppart($idAppart)
 {
@@ -241,7 +247,6 @@ function GetAppart($idAppart)
     return $lobjAppart;
 }
 
-
 //Affichage de tous les appartements
 function GetApparts()
 {
@@ -258,32 +263,31 @@ function GetApparts()
     return $lobjApparts;
 }
 
-
 //Ajout d'un logement
-function AddAppart( $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
+function AddAppart($prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut, $idUser, $idQuartier, $idtown)
 {
     $bdd = GetDataBase();
     $lboolOk = false;
 
 
-    if($bdd){
+    if ($bdd) {
         $lstrQuery = "INSERT INTO appartements (prix, description, etat, nbPiece, surface, meuble, ind_energie, dateCreation, dateExpiration, message, statut, FK_USERS, FK_QUARTIERS, FK_VILLES)
                     VALUES (:pPrix, :pDescription, :pEtat, :pNbPiece, :pSurface, :pMeuble, :pIndEnergy, :pCreation, :pExpiration, :pMessage, :pStatut, :pUsers, :pQuartier, :pTown)";
         $stmt = $bdd->prepare($lstrQuery);
-        $stmt->bindParam(':pPrix',$prix);
-        $stmt->bindParam(':pDescription',$description);
-        $stmt->bindParam(':pEtat',$etat);
-        $stmt->bindParam(':pNbPiece',$nbPiece);
-        $stmt->bindParam(':pSurface',$surface);
-        $stmt->bindParam(':pMeuble',$meuble);
-        $stmt->bindParam(':pIndEnergy',$indEnergy);
-        $stmt->bindParam(':pCreation',$creation);
-        $stmt->bindParam(':pExpiration',$expiration);
-        $stmt->bindParam(':pMessage',$message);
-        $stmt->bindParam(':pStatut',$statut);
-        $stmt->bindParam(':pUsers',$idUser);
-        $stmt->bindParam(':pQuartier',$idQuartier);
-        $stmt->bindParam(':pTown',$idtown);
+        $stmt->bindParam(':pPrix', $prix);
+        $stmt->bindParam(':pDescription', $description);
+        $stmt->bindParam(':pEtat', $etat);
+        $stmt->bindParam(':pNbPiece', $nbPiece);
+        $stmt->bindParam(':pSurface', $surface);
+        $stmt->bindParam(':pMeuble', $meuble);
+        $stmt->bindParam(':pIndEnergy', $indEnergy);
+        $stmt->bindParam(':pCreation', $creation);
+        $stmt->bindParam(':pExpiration', $expiration);
+        $stmt->bindParam(':pMessage', $message);
+        $stmt->bindParam(':pStatut', $statut);
+        $stmt->bindParam(':pUsers', $idUser);
+        $stmt->bindParam(':pQuartier', $idQuartier);
+        $stmt->bindParam(':pTown', $idtown);
         $stmt->execute();
 
         $lboolOk = true;
@@ -292,12 +296,13 @@ function AddAppart( $prix, $description, $etat, $nbPiece, $surface, $meuble, $in
 }
 
 //Modification d'un appartement
-function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut){
+function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut)
+{
     $lboolOk = false;
 
     $bdd = GetDataBase();
 
-    if ($bdd){
+    if ($bdd) {
         $lstrQuery = "UPDATE appartements SET prix = :pPrix, description = :pDescription, etat = :pEtat, nbPiece = :pNbPiece, surface = :pSurface, meuble = :pMeuble, ind_energie = :pIndEnergy, dateCreation = :pCreation, dateExpiration = :pExpiration, message = :pMessage, statut =:pStatut WHERE id_appartement = :pId";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pPrix', $prix);
@@ -319,12 +324,14 @@ function UpdateAppart($id, $prix, $description, $etat, $nbPiece, $surface, $meub
 
     return $lboolOk;
 }
-function UpdateAppartAdmin($prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut){
+
+function UpdateAppartAdmin($prix, $description, $etat, $nbPiece, $surface, $meuble, $indEnergy, $creation, $expiration, $message, $statut)
+{
     $lboolOk = false;
 
     $bdd = GetDataBase();
 
-    if ($bdd){
+    if ($bdd) {
         $lstrQuery = "UPDATE appartements SET prix = :pPrix, description = :pDescription, etat = :pEtat, nbPiece = :pNbPiece, surface = :pSurface, meuble = :pMeuble, ind_energie = :pIndEnergy, dateCreation = :pCreation, dateExpiration = :pExpiration, message = :pMessage, statut =:pStatut";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pPrix', $prix);
@@ -346,12 +353,13 @@ function UpdateAppartAdmin($prix, $description, $etat, $nbPiece, $surface, $meub
 }
 
 //Suppression d'un appartement
-function DeleteAppart($id){
+function DeleteAppart($id)
+{
     $lboolOk = false;
 
     $bdd = GetDataBase();
 
-    if($bdd) {
+    if ($bdd) {
         $lstrQuery = "DELETE FROM appartements where id_appartement = :pId";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pId', $id);
@@ -364,12 +372,13 @@ function DeleteAppart($id){
 }
 
 //Fonction de recherche
-function SearchCity($lstrSearch){
+function SearchCity($lstrSearch)
+{
     $lobjAppart = null;
 
     $bdd = GetDataBase();
 
-    if ($bdd){
+    if ($bdd) {
         $lstrQuery = "Select * from villes WHERE nomVille LIKE :pSearch";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pSearch', $lstrSearch);
@@ -381,7 +390,8 @@ function SearchCity($lstrSearch){
 }
 
 //Afficher les appartements par ville
-function GetAppartsByCity($city){
+function GetAppartsByCity($city)
+{
 
     $lobjAppartByCity = null;
 
@@ -398,3 +408,41 @@ function GetAppartsByCity($city){
 
     return $lobjAppartByCity;
 }
+
+//Afficher le propriétaire d'un appartement
+function GetProprioByAppart($idProprio)
+{
+    $lobjProprio = null;
+
+    $bdd = GetDataBase();
+
+    if ($bdd) {
+        $lstrQuery = "SELECT users.nom, users.prenom, users.phone, users.mail FROM appartements, users WHERE appartements.FK_USERS = :pIdUser";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pIdUser',$idProprio);
+        $stmt->execute();
+        $lobjProprio = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    return $lobjProprio;
+}
+
+//Ajout du solde pour un utilisateur
+function AddMoney($idUser, $montant){
+    $lboolOk = false;
+
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "UPDATE users SET solde = :pMontant WHERE id = :pIdUser";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pIdUser',$idUser);
+        $stmt->bindParam(':pMontant',$montant);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+    return $lboolOk;
+}
+
+//Retrait du solde pour un utilisateur

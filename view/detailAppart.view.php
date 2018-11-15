@@ -8,6 +8,7 @@
 // if ($lobjAppart) {
     ?>
     <div>
+        Prix : <?php echo($lobjAppart->prix); ?> jetons
         <!-- Prix : <?php //echo($lobjAppart->prix); ?> euros -->
     </div>
     <div>
@@ -48,6 +49,8 @@
       //  }; ?>
     </div>
     <div>
+        Propriétaire : <?php echo($lobjUser->nom);
+        echo(" " . $lobjUser->prenom); ?>
         Occupé par : <?php //echo($lobjUser->nom); echo(" ".$lobjUser->prenom); ?>
     </div>
     <div>

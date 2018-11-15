@@ -5,7 +5,7 @@ if ($lobjUser) {
     <!-- Formulaire HTML pour modifier les données-->
     <h1> Modifiez vos informations </h1>
     <div>
-        <form method="post" action="../controller/updateUser.php">
+        <form method="post" action="../controller/admin/updateUser.php">
             <div class="input-field">
                 <label for="identifiant" class="" hidden="hidden">
                     <input required name="identifiant" type="text" value="<?php echo($lobjUser->id);?>" >
@@ -47,8 +47,12 @@ if ($lobjUser) {
                 </label>
             </div>
             <div class="input-field">
-                <label for="type" class=""> Type (locataire/loueur)
-                    <input required name="type" type="text" value="<?php echo($lobjUser->type);?>">
+                <label for="type" class=""> Statut
+                    <input required name="type" type="text" value="<?php if($lobjUser->isProprietaire == 1){
+                        echo ("Propriétaire");
+                    }else{
+                        echo("Locataire");
+                    }?>">
                 </label>
             </div>
             <div class="input-field">
@@ -62,6 +66,6 @@ if ($lobjUser) {
                 </label>
             </div>
         </form>
-        <button> <a href = "../controller/listOfUsers.php" style="text-decoration: none; color: black" >Retour</a></button>
+        <button> <a href = "../admin/listOfUsers.php" style="text-decoration: none; color: black" >Retour</a></button>
     </div>
 <?php }

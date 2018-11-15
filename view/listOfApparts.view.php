@@ -7,6 +7,10 @@
 <!--Formulaire de recherche par ville
 <p> Rechercher une ville</p>
 
+    <button><a href="/view/profil.php"> Voir mon profil </a></button>
+    <!--Formulaire de recherche par ville-->
+    <h2> Rechercher un appartement dans une ville</h2>
+
 
     <form method="POST" action="../controller/listOfApparts.php">
         <div>
@@ -18,7 +22,7 @@
             </label>
         </div>
         <div>
-            <label id = "submit">
+            <label id="submit">
                 <input type="submit" name="submit" value="Rechercher">
             </label>
         </div>

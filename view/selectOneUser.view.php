@@ -19,4 +19,4 @@ if ($lobjUser) {
     echo("Type : " . $lobjUser->type . "<br>");
     echo(" Mot de passe : " . $lobjUser->password . "<br>");
 }?>
-<button> <a href="../controller/updateUser.php" style="text-decoration: none">Modifier les informations</button>
+<button> <a href="../controller/admin/updateUser.php" style="text-decoration: none">Modifier les informations</button>

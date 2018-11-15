@@ -16,7 +16,12 @@ if($QRY_STR == 'disconnect'){
     session_destroy();
 }
 
- 
+    $QRY_STR = $_SERVER['QUERY_STRING'];
+
+    if($QRY_STR == 'error=2'){
+        echo("Vous n'êtes pas administrateur ! ");
+    }
+//    var_dump($_SESSION)
 ?>
 
 <div id="mainContainer" class="container welcome">
