@@ -76,9 +76,6 @@ require('../helper/header.php')
                     <div class="infoBloc">
                         <h3>
                             <?php
-                            // $bdd = getDataBase();
-                            // $loHouse=getAdHousesById($bdd,$_SESSION["user"][2]);
-                            // $loStudent = getStudent($_SESSION["user"][2],$bdd);
                             echo($lobjAppart->message);
                             ?>
 
@@ -91,14 +88,8 @@ require('../helper/header.php')
                                         <img src="../assets/img/test1.jpg" height='auto' width='100%'>
                                     </a>
                                 </div>
-                                <!-- <div class="swiper-slide">
-                                    <a href="../assets/img/test2.png" target="_blank">
-                                        <img src="../assets/img/test5.jpg" height='auto' width='100%'>
-                                    </a>
-                                </div> -->
                             </div>
 
-                            <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
 
                             <!-- Add arrows -->
