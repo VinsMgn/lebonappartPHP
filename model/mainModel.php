@@ -417,7 +417,7 @@ function GetProprioByAppart($idProprio)
     $bdd = GetDataBase();
 
     if ($bdd) {
-        $lstrQuery = "SELECT users.nom, users.prenom, users.phone, users.mail FROM appartements, users WHERE appartements.FK_USERS = :pIdUser";
+        $lstrQuery = "SELECT users.id, users.nom, users.prenom, users.phone, users.mail FROM appartements, users WHERE appartements.FK_USERS = :pIdUser";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pIdUser',$idProprio);
         $stmt->execute();
@@ -446,3 +446,36 @@ function AddMoney($idUser, $montant){
 }
 
 //Retrait du solde pour un utilisateur
+function RemoveMoney($idUser, $montant){
+    $lboolOk = false;
+
+    $bdd = GetDataBase();
+
+    if ($bdd){
+        $lstrQuery = "UPDATE users SET solde = :pMontant WHERE id = :pIdUser";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pIdUser',$idUser);
+        $stmt->bindParam(':pMontant',$montant);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+    return $lboolOk;
+}
+
+//Blocage de l'argent
+function LockedMoney($idUser, $montant){
+    $lboolOk = false;
+
+    $bdd = GetDataBase();
+    if($bdd){
+        $lstrQuery = "UPDATE users SET lockedMoney = :pMontant WHERE id = :pId";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->bindParam(':pMontant',$montant);
+        $stmt->bindParam(':pId',$idUser);
+        $stmt->execute();
+
+        $lboolOk = true;
+    }
+    return $lboolOk;
+}
