@@ -28,7 +28,7 @@ if($QRY_STR == 'error=2'){
 
         <div class="welcomeContainer">
             <div class="welcomeHead">
-                <img class="img" src="../assets/img/logo.png">
+                <img class="img" src="/assets/img/logo.png">
                 <h3 class="ellipsis">
                     Bienvenue sur LeBonappart!
                 </h3>

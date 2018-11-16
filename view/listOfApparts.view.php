@@ -61,8 +61,6 @@ include("../helper/header.php");
                                         </div>
                                         <div>
                                             date : <?php
-                                            // $bdd = getDataBase();
-                                            // $loAdHouses = getAdHousing($bdd);
                                             echo($appart->dateCreation);
 
                                             // echo($loAdHouses[0]->dateStart);

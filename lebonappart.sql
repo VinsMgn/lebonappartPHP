@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 15 nov. 2018 à 08:40
+-- Généré le :  ven. 16 nov. 2018 à 14:14
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -64,14 +64,15 @@ CREATE TABLE IF NOT EXISTS `appartements` (
   KEY `APPARTEMENTS_USERS_FK` (`FK_USERS`),
   KEY `APPARTEMENTS_QUARTIERS0_FK` (`FK_QUARTIERS`),
   KEY `APPARTEMENTS_VILLES1_FK` (`FK_VILLES`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `appartements`
 --
 
 INSERT INTO `appartements` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
-(6, 350, 'Studio', 'Neuf', 1, 20, 1, '150', '02/05/2018', '01/01/2019', 'Studio 20m² tout neuf disponible imméditament', 0, 2, 6, 75000);
+(8, 200, 'Studio', 'Beau', 1, 12, 0, 'F', '01/01/2018', '31/12/2018', 'Studio pas chère et grand', 0, 1, 4, 75000),
+(9, 120, 'Chalet', 'En bois', 2, 50, 1, 'D', '25/12/2017', '25/01/2018', 'Chalet en bois neuf', 0, 2, 1, 34000);
 
 --
 -- Déclencheurs `appartements`
@@ -112,19 +113,20 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `habite`;
 CREATE TABLE IF NOT EXISTS `habite` (
-  `idApparthabite` int(11) NOT NULL,
+  `idApparthabite` int(11) NOT NULL AUTO_INCREMENT,
   `FK_USERS_HABITE` int(11) NOT NULL,
   `dateVente` varchar(180) NOT NULL,
   PRIMARY KEY (`idApparthabite`) USING BTREE,
   KEY `habite_USERS0_FK` (`FK_USERS_HABITE`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `habite`
 --
 
 INSERT INTO `habite` (`idApparthabite`, `FK_USERS_HABITE`, `dateVente`) VALUES
-(3, 2, '02/05/2018');
+(1, 1, '01/01/2018'),
+(4, 2, '25/12/2017');
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,8 @@ CREATE TABLE IF NOT EXISTS `historique` (
 
 INSERT INTO `historique` (`id_appartement`, `prix`, `description`, `etat`, `nbPiece`, `surface`, `meuble`, `ind_energie`, `dateCreation`, `dateExpiration`, `message`, `statut`, `FK_USERS`, `FK_QUARTIERS`, `FK_VILLES`) VALUES
 (2, 500, 'appartement T2', 'ancien', 2, 30, 1, '50', '07/01/1999', '09/10/2019', 'Appartement style ancien à louer', 0, 1, 3, 34000),
-(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000);
+(3, 850, 'Appartement T4', 'Rénové', 4, 50, 1, '350', '25/12/2016', '25/12/2018', 'Appartement rénové', 1, 2, 3, 34000),
+(6, 350, 'Studio', 'Neuf', 1, 20, 1, '150', '02/05/2018', '01/01/2019', 'Studio 20m² tout neuf disponible imméditament', 0, 2, 6, 75000);
 
 -- --------------------------------------------------------
 
@@ -207,21 +210,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pays` varchar(50) NOT NULL,
   `solde` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `type` varchar(50) NOT NULL,
   `isAdmin` tinyint(1) NOT NULL,
+  `isProprietaire` tinyint(1) NOT NULL,
+  `lockedMoney` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `adress`, `phone`, `mail`, `pays`, `solde`, `password`, `type`, `isAdmin`) VALUES
-(1, 'Martin', 'Gabriel', '25 rue des coquelicots', '0612345678', 'gabriel.martin@epsi.fr', 'France', '200', '1234', 'locataire', 0),
-(2, 'Marignier', 'Vincent', 'Montpellier', '0612345678', 'vincent.marignier@epsi.fr', 'France', '150', 'abcd', 'locataire', 0),
-(3, 'Dupont', 'Jean', '25 rue de Montpellier', '0465885987', 'dupontjean@yahoo.fr', 'France', '0', '1234', 'loueur', 0),
-(4, 'Durand', 'Anthony', '34 route de nimes', '0612345679', 'a.durand@gmail.com', 'France', '900', '1234', 'locataire', 0),
-(5, 'Dupont', 'Jacques', 'Montpellier', '0612345670', 'jacques.dupont@epsi.fr', 'Frane', '0', '1234', 'loueur', 0);
+INSERT INTO `users` (`id`, `nom`, `prenom`, `adress`, `phone`, `mail`, `pays`, `solde`, `password`, `isAdmin`, `isProprietaire`, `lockedMoney`) VALUES
+(1, 'Martin', 'Gabriel', '25 rue des coquelicots', '0612345678', 'gabriel.martin@epsi.fr', 'France', '500', '1234', 1, 1, 150),
+(2, 'Marignier', 'Vincent', 'Montpellier', '0612345678', 'vincent.marignier@epsi.fr', 'France', '150', 'abcd', 0, 0, NULL),
+(3, 'Dupont', 'Jean', '25 rue de Montpellier', '0465885987', 'dupontjean@yahoo.fr', 'France', '0', '1234', 0, 0, NULL),
+(4, 'Durand', 'Anthony', '34 route de nimes', '0612345679', 'a.durand@gmail.com', 'France', '900', '1234', 0, 0, NULL),
+(5, 'Dupont', 'Jacques', 'Montpellier', '0612345670', 'jacques.dupont@epsi.fr', 'Frane', '0', '1234', 0, 0, NULL),
+(6, 'Bertin', 'Manon', 'Montpellier', '0612345675', 'm.bertin@epsi.fr', 'France', '0', '1234', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
