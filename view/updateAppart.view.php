@@ -78,7 +78,7 @@ if ($lobjAppart) {
                 </label>
             </div>
         </form>
-        <button> <a href = "../view/profil.php" style="text-decoration: none; color: black" >Mon profil</a></button>
+        <button> <a href = "../index.php" style="text-decoration: none; color: black" >Mon profil</a></button>
         <button> <a href = "../controller/listOfAppartsUser.php" style="text-decoration: none; color: black" >Retour</a></button>
     </div>
 <?php }

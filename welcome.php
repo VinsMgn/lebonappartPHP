@@ -27,7 +27,7 @@ require_once("./model/mainModel.php");
 
             <div class="profileContainer">
                 <div class="user">
-                    <img class="pp" src="../assets/img/yv.png">
+                    <img class="pp" src="/assets/img/yv.png">
                     <h3 class="ellipsis">
                         <?php $lobjUser = GetUser($_SESSION['id']);
                         echo($lobjUser->prenom . " ".$lobjUser->nom); ?>
@@ -67,9 +67,6 @@ require_once("./model/mainModel.php");
                     </div>
                     <div class="userAds">
                         <a href="./controller/listOfAppartsUser.php">Mon logement
-                    </div>
-                    <div class="userAds">
-                        <a href="./controller/listOfApparts.php">Liste des logements
                     </div>
 
 
