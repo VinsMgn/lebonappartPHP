@@ -1,6 +1,7 @@
 <?php
  include('./helper/header.php');
  require_once("./helper/authGuard.php");
+
  if(isset($_SESSION)){
     if($_SESSION['id'] != null){
        header('Location: /welcome.php');
@@ -8,7 +9,7 @@
     }
 }
  session_start();
- AuthGuard('');
+ 
  $QRY_STR = $_SERVER['QUERY_STRING'];
  
 //Traitement si l'utilisateur souhaite se déconnecter
