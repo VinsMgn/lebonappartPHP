@@ -11,7 +11,6 @@
     Formulaire de recherche par ville-->
     <h2> Rechercher un appartement dans une ville</h2>
 
-
     <form method="POST" action="../controller/listOfApparts.php">
         <div>
             <label id="searchCity">Ville :</label>
@@ -129,7 +128,6 @@ $lobjApparts = GetApparts();
 
         </div>
     </div>
-
 <?php
 include("../helper/footer.php");
 

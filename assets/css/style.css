@@ -2,7 +2,13 @@
 body{
     height: 100vh;
 }
-
+.wip{
+    /* background-image: "/assets/img/wip.jpg"; */
+    background-size: contain;
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+}
 .input-search-bar{
     padding-left: 46px;
 }
