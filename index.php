@@ -1,14 +1,13 @@
 <?php
  include('./helper/header.php');
  require_once("./helper/authGuard.php");
+ session_start();
 
  if(isset($_SESSION)){
-    if($_SESSION['id'] != null){
+    if($_SESSION['id']){
        header('Location: /welcome.php');
-        
     }
 }
- session_start();
  
  $QRY_STR = $_SERVER['QUERY_STRING'];
  
@@ -17,12 +16,10 @@ if($QRY_STR == 'disconnect'){
     session_destroy();
 }
 
-    $QRY_STR = $_SERVER['QUERY_STRING'];
+if($QRY_STR == 'error=2'){
+    echo("Vous n'êtes pas administrateur ! ");
+}
 
-    if($QRY_STR == 'error=2'){
-        echo("Vous n'êtes pas administrateur ! ");
-    }
-//    var_dump($_SESSION)
 ?>
 
 <div id="mainContainer" class="container welcome">
@@ -33,7 +30,7 @@ if($QRY_STR == 'disconnect'){
             <div class="welcomeHead">
                 <img class="img" src="../assets/img/logo.png">
                 <h3 class="ellipsis">
-                    Bienvenue sur OpenHouse!
+                    Bienvenue sur LeBonappart!
                 </h3>
             </div>
     

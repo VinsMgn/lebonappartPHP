@@ -1,6 +1,6 @@
 <?php
 //$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-include_once('../helper/header.php');
+// include_once('../helper/header.php');
 //Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
 //require_once("../controller/insertAppart.php");
 ?>

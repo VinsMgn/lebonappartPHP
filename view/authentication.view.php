@@ -1,36 +1,8 @@
 <?php
-//$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-
-//Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
-//require_once("../controller/authentication.php");
 include_once('../helper/header.php');
 ?>
 
-<!-- <h1>Connexion à la plateforme</h1>
 
-
-<form action="" method="POST" >
-    <input type="text" placeholder="Veuillez entrer votre mail" name="mail"> 
-    <input type="password" placeholder="Veuillez entrer votre mot de passe" name="password"> 
-    <input name="submit" type="submit" value="Connexion">
-</form>
-        -->
- <!--Authentification page-->
-<!-- <div>
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="email">Email : </label>
-            <input type="text" class="form-control" name="mail" placeholder="Entrez votre adresse mail"/>
-        </div>
-        <div class="form-group">
-            <label for="password">Mot de passe : </label>
-            <input type="password" class="form-control" name="password" placeholder="Entrez votre mot de passe"/>
-        </div>
-
-        <br>
-        <input type="submit" value="Connecter" class="btn btn-primary"/>
-    </form>
-</div> -->
 
 <div id="mainContainer" class="container">
     <?php

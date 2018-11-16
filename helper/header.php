@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- JQUERY -->
-    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
 
     <!-- MATERIALIZE -->
     <!-- <script src="../assets/js/materialize.min.js"></script> -->
@@ -21,8 +21,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- SWIPER -->
-    <script src="../assets/js/swiper.min.js"></script>
-    <link  rel="stylesheet" type="text/css" href="../assets/css/swiper.min.css">
+    <!-- <script src="/assets/js/swiper.min.js"></script> -->
+    <!-- <link  rel="stylesheet" type="text/css" href="/assets/css/swiper.min.css"> -->
 
 
 
