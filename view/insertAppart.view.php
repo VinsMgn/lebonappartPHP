@@ -5,6 +5,7 @@
 //require_once("../controller/insertAppart.php");
 ?>
 
+<div class="wip">
 <h1> Ajout d'un appartement à la plateforme</h1>
 
 <div class="">
@@ -104,7 +105,7 @@
     </form>
     <button><a href="../welcome.php" style="text-decoration: none; color: black">Retour</a></button>
 </div>
-
+</div>
 <?php 
     include_once('../helper/footer.php');   
 ?>
