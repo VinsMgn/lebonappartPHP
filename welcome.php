@@ -1,50 +1,51 @@
-<?php 
-    // $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-    // $RQT_URL = $_SERVER['REQUEST_URI'];
-
-    // require_once ("./helper/authGuard.php");
-
-    // session_start();
-    // AuthGuard($RQT_URL);
-
-    // $QRY_STR = $_SERVER['QUERY_STRING'];
-
-    // if($QRY_STR == 'error=2'){
-    //     echo("Vous n'êtes pas administrateur ! ");
-    // }
-   
-    // if(isset($_SESSION)){
-    //     if($_SESSION['isAdmin'] == '1'){
-?>
-            <!-- <button><a href="/view/admin.php"> Vous êtes un administrateur </a></button> -->
 <?php
-        // }
-    // }
+// $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
+// $RQT_URL = $_SERVER['REQUEST_URI'];
+
+// require_once ("./helper/authGuard.php");
+
+// session_start();
+// AuthGuard($RQT_URL);
+
+// $QRY_STR = $_SERVER['QUERY_STRING'];
+
+// if($QRY_STR == 'error=2'){
+//     echo("Vous n'êtes pas administrateur ! ");
+// }
+
+// if(isset($_SESSION)){
+//     if($_SESSION['isAdmin'] == '1'){
+?>
+    <!-- <button><a href="/view/admin.php"> Vous êtes un administrateur </a></button> -->
+<?php
+// }
+// }
 
 ?>
 
 
+    <!-- <button><a href="/view/profil.php"> Voir mon profil </a></button> -->
 
-<!-- <button><a href="/view/profil.php"> Voir mon profil </a></button> -->
 
-
-<!-- <button><a href="/index.php?disconnect"> Disconnect </a></button> -->
+    <!-- <button><a href="/index.php?disconnect"> Disconnect </a></button> -->
 
 <?php
- $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
- $RQT_URL = $_SERVER['REQUEST_URI'];
+$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
+$RQT_URL = $_SERVER['REQUEST_URI'];
 
- require_once ("./helper/authGuard.php");
+require_once("./helper/authGuard.php");
 
- session_start();
- AuthGuard($RQT_URL);
+session_start();
+AuthGuard($RQT_URL);
 
- $QRY_STR = $_SERVER['QUERY_STRING'];
+$QRY_STR = $_SERVER['QUERY_STRING'];
 
- if($QRY_STR == 'error=2'){
-     echo("Vous n'êtes pas administrateur ! ");
- }
- include('./helper/header.php')
+if ($QRY_STR == 'error=2') {
+    echo("Vous n'êtes pas administrateur ! ");
+}
+include('./helper/header.php');
+require_once("./model/mainModel.php");
+
 ?>
     <div id="mainContainer" class="container">
         <?php
@@ -53,13 +54,16 @@
         ?>
 
         <div id="contentContainer" class="scrollable">
+            <div>
+                <a href="./index.php?disconnect"> Déconnexion</a>
+            </div>
 
             <div class="profileContainer">
                 <div class="user">
                     <img class="pp" src="../assets/img/yv.png">
                     <h3 class="ellipsis">
-                        <?php //echo($_SESSION["user"][3]);
-                        echo('Robert'); ?>
+                        <?php $lobjUser = GetUser($_SESSION['id']);
+                        echo($lobjUser->prenom . " ".$lobjUser->nom); ?>
                     </h3>
                 </div>
 
@@ -69,76 +73,46 @@
                         <span class="title">Informations</span>
                         <ul>
                             <li>
-                                <span class="typeInfo">Pseudo : </span>
-                                <?php  echo('Robert'); ?>
+                                <span class="typeInfo">Nom : </span>
+                                <?php echo($lobjUser->nom); ?>
                             </li>
                             <li>
-                                <span class="typeInfo">Nom complet : </span>
-                                <?php  echo('Robert'); ?>
+                                <span class="typeInfo">Prénom : </span>
+                                <?php echo($lobjUser->prenom); ?>
                             </li>
                             <li>
-                                <span class="typeInfo">Ecole : </span>
-                                <?php
-                                // $lobjStudent = GetStudent($_SESSION["user"][2]);
-                                // $idSchool = $lobjStudent->idSchool;
-                                // $lobjSchool = getSchool(null, $idSchool);
-                                // echo($lobjSchool->address); ?>
+                                <span class="typeInfo">Adresse : </span>
+                                <?php echo($lobjUser->adress); ?>
                             </li>
                             <li>
-                                <!-- <span class="typeInfo">Téléphone : </span> -->
-                                <!-- <?php //echo($_SESSION["user"][6]); ?> -->
+                                <span class="typeInfo">Mail : </span>
+                                <?php echo($lobjUser->mail); ?>
                             </li>
                             <li>
-                                <!-- <span class="typeInfo">Adresse mail : </span> -->
-                                <?php// echo($_SESSION["user"][1]); ?>
+                                <span class="typeInfo">Pays : </span>
+                                <?php echo($lobjUser->pays); ?>
+                            </li>
+                            <li>
+                                <span class="typeInfo">Solde : </span>
+                                <?php echo($lobjUser->solde); ?>
                             </li>
                         </ul>
                     </div>
-
                     <div class="userAds">
-                        <span class="title">Mes annonces de logement</span>
-                        <ul>
-                            <?php
-
-                          //  $lobjAdHouse = getAdHousesByStudent(null,$_SESSION["user"][2]);
-                            //foreach ($lobjAdHouse as $adHouse){?>
-                            <li>
-                                <a href="../controller/insertAppart.php">
-                                    <?php
-                                    //echo($adHouse->title);
-                                    //} ?>
-                                </a>
-                            </li>
-
-
-                        </ul>
+                        <a href="./controller/listOfAppartsUser.php">Mon logement
                     </div>
-
                     <div class="userAds">
-                        <span class="title">Mes annonces de bon plan</span>
-                        <ul>
-                            <?php
-
-                            //$lobjAdTips = getTipsByStudent(null,$_SESSION["user"][2]);
-                           // foreach ($lobjAdTips as $tips){?>
-                            <li>
-                                <a href="../controler/edit_ad_tips.controller.php">
-                                    <?php
-                                   // echo($tips->title);
-                                    //} ?>
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="./controller/listOfApparts.php">Liste des logements
                     </div>
+
 
                 </div>
 
-<!--                <button class="btn submit waves-effect waves-light" type="submit" name="submit">-->
-                    <a href="./controller/insertAppart.php" class="btn submit waves-effect waves-light">Ajouter un logement
-                        <i class="material-icons right">add_circle</i>
-                    </a>
+                <a href="./controller/insertAppart.php" class="btn submit waves-effect waves-light">Ajouter un logement
+                    <i class="material-icons right">add_circle</i>
+                </a>
 
-<!--                </button>-->
+                <!--                </button>-->
             </div>
 
         </div>
@@ -147,5 +121,5 @@
     </div>
 
 <?php
-include("../helper/footer.php");
+include("./helper/footer.php");
 ?>

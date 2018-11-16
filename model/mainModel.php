@@ -127,7 +127,7 @@ function InsertUser($name, $firstname, $address, $phone, $mail, $pays, $solde, $
 
     if ($bdd) {
         //Connexion ok, préparation de la requête
-        $lstrQuery = "INSERT INTO users ( nom, prenom, adress, phone, mail, pays, solde, password, type, isAdmin) VALUES ( :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType, :pIsAdmin)";
+        $lstrQuery = "INSERT INTO users ( nom, prenom, adress, phone, mail, pays, solde, password, isProprietaire, isAdmin) VALUES ( :pNom, :pPrneom, :pAdress, :pPhone, :pMail, :pPays, :pSolde, :pPassword, :pType, :pIsAdmin)";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pNom', $name);
         $stmt->bindParam(':pPrneom', $firstname);

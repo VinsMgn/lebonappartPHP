@@ -46,8 +46,11 @@ require_once("../controller/insertUser.php");
             </label>
         </div>
         <div class="input-field">
-            <label for="type" class=""> Type (locataire/loueur)
-                <input required name="type" type="text">
+            <label for="type" class=""> Propriétaire
+                <select required name="type" >
+                    <option> Oui</option>
+                    <option> Non</option>
+                </select>
             </label>
         </div>
         <div class="input-field">
@@ -62,6 +65,6 @@ require_once("../controller/insertUser.php");
         </div>
      
     </form>
-    <button> <a href = "../controller/admin/listOfUsers.php" style="text-decoration: none; color: black" >Retour</a></button>
+    <button> <a href = "../index.php" style="text-decoration: none; color: black" >Retour</a></button>
 </div>
 

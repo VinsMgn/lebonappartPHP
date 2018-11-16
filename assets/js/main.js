@@ -16,6 +16,7 @@ function getData(){
         .then(res => res.json())
         .then(quartier =>{
             var quartSelect = document.getElementById('quartSelect');
+            quartSelect.innerHTML='';
             for(var quart of quartier){
                     if(quart.fk_ville_quartier == cp){
 
