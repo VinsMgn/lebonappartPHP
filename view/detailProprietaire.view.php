@@ -19,7 +19,7 @@ require_once("../controller/detailProprietaire.php"); ?>
 
 <div>
     <p> Pour cet appartement il est nécessaire d'avoir <?php echo($lobjAppart->prix)?> jetons</p>
-    <p> En effectuant la demande de location, la somme en jetons sera retirée de votre solde.</p>
+    <p> En effectuant la demande de location, la somme en jetons sera retirée de votre solde jusqu'à acceptation du propriétaire.</p>
 </div>
 
 <div>

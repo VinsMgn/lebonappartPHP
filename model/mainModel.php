@@ -77,7 +77,7 @@ function GetQuartierByCity($cp)
 
     return $lobjQuart;
 }
-
+//TODO
 function GetVilles()
 {
 
