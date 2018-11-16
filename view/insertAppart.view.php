@@ -1,13 +1,10 @@
 <?php
 //$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-
+include_once('../helper/header.php');
 //Ne marche qu'en chemin absolu, a voir pour le chemin relatif plus tard
 //require_once("../controller/insertAppart.php");
 ?>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-</head>
+
 <h1> Ajout d'un appartement à la plateforme</h1>
 
 <div class="formcontainer">
@@ -108,4 +105,6 @@
     <button><a href="../controller/listOfApparts.php" style="text-decoration: none; color: black">Retour</a></button>
 </div>
 
-<script src="/assets/main.js"></script>
+<?php 
+    include_once('../helper/footer.php');   
+?>
