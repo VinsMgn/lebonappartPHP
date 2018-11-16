@@ -24,9 +24,6 @@ require_once("./model/mainModel.php");
         ?>
 
         <div id="contentContainer" class="scrollable">
-            <div>
-                <a href="./index.php?disconnect"> Déconnexion</a>
-            </div>
 
             <div class="profileContainer">
                 <div class="user">

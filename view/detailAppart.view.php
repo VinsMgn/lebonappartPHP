@@ -121,7 +121,7 @@ require('../helper/header.php')
                             <span class="typeInfo">Frais : </span>
                             <?php
                             echo($lobjAppart->prix);
-                            ?>€/jour
+                            ?> jetons/semaine
                         </div>
 
                         <div class="info">
@@ -146,13 +146,12 @@ require('../helper/header.php')
                             ?>m²
                         </div>
                         <div class="info">
-                            <span class="typeInfo">Adresse de contact : </span>
-                            <?php
-                            // echo($loStudent->email);
-                            ?>
+                            <span class="typeInfo">
+                                <a href="../controller/detailProprietaire.php?id=<?php echo($lobjAppart->FK_USERS) ?>">Ce logement m'intéresse</a>
+                            </span>
+
                         </div>
                     </div>
-                    <button><a href="../controller/detailProprietaire.php?id=<?php echo($lobjAppart->FK_USERS) ?>">Ce logement m'intéresse</a></button>
                     <a href="../controller/listOfApparts.php" class="close">
                         <i class="far fa-times-circle"></i>
                     </a>
