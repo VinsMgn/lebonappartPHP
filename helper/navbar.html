@@ -5,30 +5,32 @@
             <div class="col m2 l2">
                 <div class="logo-pic"></div>
             </div>
+           
             <div class="col m6 l6 navbar-col">
+                
                 <div class="navbar-link-container ">
-                    <a href="../view/adsTips.php"><span class="navbar-link">BONS PLANS</span></a>
-                    <a href="../view/adsHousing.php"> <span class="navbar-link">LOGEMENTS</span></a>
+                    <!-- <a href="/view/adsTips.php"><span class="navbar-link">BONS PLANS</span></a> -->
+                    <a href="/controller/listOfApparts.php"> <span class="navbar-link">LOGEMENTS</span></a>
                     <a href=""><span class="navbar-link">A PROPOS</span></a>
 
                 </div>
             </div>
 
             <div class="col m3 l3">
-                <a onclick="$('.addCreateDropdown').toggle();" class=" btn navbar-announce">CREER UNE ANNONCE </a>
-                <div class="addCreateDropdown">
-                    <a href="/controler/create_ad_houses.controller.php">
+                <a onclick="$('.addCreateDropdown').toggle();" class=" btn navbar-announce">AJOUTER UN APPART </a>
+                <!-- <div class="addCreateDropdown">
+                    <a href="/controller/insertAppart.php">
                         <div>Logement</div>
                     </a>
                     <a href="/controler/create_ad_tips.controller.php">
                         <div>Bon plan</div>
                     </a>
-                </div>
+                </div> -->
             </div>
 
 
             <div class="col m1 l1">
-                <a href="../controler/profil.controler.php">
+                <a href="/controller/profil.php">
                     <div class="profile-pic"></div>
                 </a>
             </div>

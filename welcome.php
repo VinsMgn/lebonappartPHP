@@ -1,37 +1,7 @@
-<?php
-// $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-// $RQT_URL = $_SERVER['REQUEST_URI'];
-
-// require_once ("./helper/authGuard.php");
-
-// session_start();
-// AuthGuard($RQT_URL);
-
-// $QRY_STR = $_SERVER['QUERY_STRING'];
-
-// if($QRY_STR == 'error=2'){
-//     echo("Vous n'êtes pas administrateur ! ");
-// }
-
-// if(isset($_SESSION)){
-//     if($_SESSION['isAdmin'] == '1'){
-?>
-    <!-- <button><a href="/view/admin.php"> Vous êtes un administrateur </a></button> -->
-<?php
-// }
-// }
-
-?>
-
-
-    <!-- <button><a href="/view/profil.php"> Voir mon profil </a></button> -->
-
-
-    <!-- <button><a href="/index.php?disconnect"> Disconnect </a></button> -->
 
 <?php
-$INC_DIR = $_SERVER["DOCUMENT_ROOT"];
-$RQT_URL = $_SERVER['REQUEST_URI'];
+ $INC_DIR = $_SERVER["DOCUMENT_ROOT"];
+ $RQT_URL = $_SERVER['REQUEST_URI'];
 
 require_once("./helper/authGuard.php");
 

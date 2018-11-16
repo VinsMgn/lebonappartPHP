@@ -8,100 +8,27 @@
 <p> Rechercher une ville</p>
 
     <button><a href="/view/profil.php"> Voir mon profil </a></button>
-    <!--Formulaire de recherche par ville-->
+    Formulaire de recherche par ville-->
     <h2> Rechercher un appartement dans une ville</h2>
 
 
     <form method="POST" action="../controller/listOfApparts.php">
         <div>
-            <label id="searchCity">Ville :
-                <select name="city">
-                    <option> Montpellier</option>
-                    <option> Paris</option>
-                </select>
-            </label>
+            <label id="searchCity">Ville :</label>
+            <select name="city" class="cityForm"> test
+                <?php foreach($lobjVilles as $ville){?>
+                <option value="<?php echo($ville->cpVille); ?>" style=" z-index:8; display: block; color:black;"> <?php echo($ville->nomVille);   ?></option>
+                <?php }?>
+            </select>
         </div>
         <div>
             <label id="submit">
-                <input type="submit" name="submit" value="Rechercher">
             </label>
-        </div>
-    </form> -->
 
-<?php
+                <input type="submit" name="submit" value="Rechercher">
+        </div>
+    </form> 
 
-// foreach ($lobjApparts as $lobjAppart) {
-// include('../helper/header.php');
-//foreach ($AppartByCity as $lobjAppart) {
-    ?>
-
-
-    <!-- <div>
-        <br>
-        <div>
-            Prix : <?php 
-            // echo($lobjAppart->prix); ?>€
-        </div>
-        <div>
-            Description : <?php 
-            // echo($lobjAppart->description); ?>
-        </div>
-        <div>
-            Etat : <?php 
-            // echo($lobjAppart->etat); ?>
-        </div>
-        <div>
-            Surface : <?php
-            //  echo($lobjAppart->surface); ?>
-        </div>
-        <div>
-            Meublé : <?php 
-            // if ($lobjAppart->meuble == 0) {
-                // echo("L'appartement n'est pas meublé");
-            // } else {
-                // echo("L'appartement est meublé");
-            // } ?>
-        </div>
-        <div>
-            Indice énergie : <?php
-            //  echo($lobjAppart->ind_energie); ?>
-        </div>
-        <div>
-            Date de création : <?php
-            //  echo($lobjAppart->dateCreation); ?>
-        </div>
-        <div>
-            Date d'expiration : <?php 
-            // echo($lobjAppart->dateExpiration); ?>
-        </div>
-        <div>
-            Message : <?php 
-            // echo($lobjAppart->message); ?>
-        </div>
-        <div>
-            Statut : <?php 
-            // if ($lobjAppart->statut == 1) {
-                // echo("L'appartement n'est pas disponible");
-            // } else {
-                // echo("L'appartement est disponible");
-            // } ?>
-        </div>
-        <br>
-
-        <div>
-            <button> <a href="../controller/detailAppart.php?id=<?php 
-            // echo($lobjAppart->id_appartement) ?>" style="">Voir les informations de cet appartement </a> </button>
-        </div> -->
-        <!--        <button> <a href = "../controller/updateUser.php" style="text-decoration: none; color: black">Modifier</a></button>-->
-        <!--        <button> <a href = "../controller/deleteUser.php" style="text-decoration: none; color: black" >Supprimer</a></button>-->
-
-        <br>
-    </div>
-
-    <?php
-// };
-
-?>
 <?php
 include("../helper/header.php");
 require_once("../model/mainModel.php");
@@ -109,13 +36,19 @@ require_once("../model/mainModel.php");
 // session_start();
 $lobjApparts = GetApparts();
 ?>
-
+    
     <div id="mainContainer" class="container">
         <?php
         include("../helper/navbar.html");
         ?>
 
-
+        <form style="  margin-top:46px; width:375px; z-index:5;">
+            <div class="input-field search input-search-bar">
+                <input id="search" type="search" required>
+                <label class="label-icon search-icon" for="search"><i class="material-icons ">search</i></label>
+                <i class="material-icons cross-icon">close</i>
+            </div>
+        </form>
         <div id="contentContainer">
         
             <div class="articleBloc">
@@ -139,18 +72,13 @@ $lobjApparts = GetApparts();
                                 <div>
                                     Nombre de pièces :
                                     <?php
-                                    // $bdd = getDataBase();
-                                    // $loAdHouses = getAdHousing($bdd);
                                     echo($appart->nbPiece);
 
-                                    // echo($loAdHouses[0]->rooms);
                                     ?>
                                 </div>
                                 <div>
                                     Ville : <?php
-                                    // $bdd = getDataBase();
-                                    // $loHouse = getHouseById($bdd, $_SESSION["user"][7]);
-                                    // echo($loHouse[0]->address);
+                                    
                                     echo($appart->FK_VILLES);
 
                                     ?>

@@ -61,6 +61,22 @@ function GetCity($cp)
     return $lobjCity;
 }
 
+function GetCities()
+{
+    $bdd = GetDataBase();
+    $lobjCity = false;
+
+    if ($bdd) {
+        //Connexion ok, préparation de la requête
+        $lstrQuery = "SELECT * FROM VILLES";
+        $stmt = $bdd->prepare($lstrQuery);
+        $stmt->execute();
+        $lobjCity = $stmt->fetchAll(PDO::FETCH_OBJ);;
+    }
+
+    return $lobjCity;
+}
+
 function GetQuartierByCity($cp)
 {
     $bdd = GetDataBase();
@@ -379,7 +395,7 @@ function SearchCity($lstrSearch)
     $bdd = GetDataBase();
 
     if ($bdd) {
-        $lstrQuery = "Select * from villes WHERE nomVille LIKE :pSearch";
+        $lstrQuery = "Select * from VILLES WHERE cpVille LIKE :pSearch";
         $stmt = $bdd->prepare($lstrQuery);
         $stmt->bindParam(':pSearch', $lstrSearch);
         $stmt->execute();

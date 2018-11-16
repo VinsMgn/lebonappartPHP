@@ -1,17 +1,21 @@
 var cpInput = document.getElementById('cpInput');
 var cp;
-cpInput.oninput = function (e) {
-    if(e.target.value.length === 5){
-        cp = e.target.value;
-        getData();
+if(cpInput !== undefined){
+    cpInput.oninput = function (e) {
+        if(e.target.value.length === 5){
+            cp = e.target.value;
+            getData();
+    
+    
+            var quartInput = document.getElementById('quartInput');
+            quartInput.className = 'quartInput-pinned';
+        }
+    
+    };
+}
 
-
-        var quartInput = document.getElementById('quartInput');
-        quartInput.className = 'quartInput-pinned';
-    }
-
-};
 function getData(){
+
     fetch('/controller/jsData.php?quartiers=')
         .then(res => res.json())
         .then(quartier =>{

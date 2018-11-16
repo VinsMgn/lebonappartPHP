@@ -22,7 +22,6 @@ if (isset($_POST) && count($_POST) > 0){
 
     if ($lboolOk == true){
         header('Location: ../view/profil.php');
-//        echo("L'ajout s'est bien déroulé");
     }else{
         header('Location: insertAppart.php');
         echo("L'ajout n'a pas fonctionné");
